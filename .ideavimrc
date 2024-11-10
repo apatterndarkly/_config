@@ -1,0 +1,207 @@
+syntax on
+filetype plugin indent on
+set encoding=utf-8
+set number
+set tabstop=2
+set expandtab
+set shiftwidth=2
+set shiftround
+set smartindent
+set autoindent
+set splitbelow
+set splitright
+set textwidth=88
+set colorcolumn=+1
+set formatoptions-=t
+set nowrap
+set nolist
+set listchars=trail:.,tab:->
+set nohlsearch
+set timeoutlen=300
+set ttimeoutlen=10
+set foldmethod=indent
+set foldlevel=99
+
+set nobackup
+set noswapfile
+set undodir=~/.vim/undo//
+set history=1000
+set undolevels=1000
+set pastetoggle=<F2>
+
+autocmd bufwritepre * :%s/\s\+$//e
+set wildignore+=*\\jcr_root\\*,*\\META-INF\\*,*\\tmp\\*,*\\node_modules\\*,*.swp,*.zip,*.exe
+
+" DISABLE UPPERCASING/LOWERCASING
+xnoremap u <nop>
+xnoremap U <nop>
+nnoremap gu <nop>
+nnoremap gU <nop>
+" END DISABLE UPPERCASING/LOWERCASING
+"
+let mapleader=" "
+nnoremap <Space> <nop>
+nmap <leader>l :set list!<CR>
+map <Leader>n :bn<CR>
+map <Leader>p :bp<CR>
+" map <C-v> "+y
+
+" This maps C-/ to toggle comment
+" map <C-_> <Leader>__
+
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-l> <C-w>l
+
+imap kj <Esc>
+vmap kj <Esc>
+cnoremap kj mode<CR>
+
+nmap ; :
+vmap ; :
+
+" nmap <Leader>v <Plug>CtrlSFPrompt
+
+"''''''''''''''''''''''''''' Vim Fugitive
+" nmap <Leader>b :Gblame<CR>
+" nmap <Leader>g :Gdiff<CR>
+
+"''''''''''''''''''''''''''' Syntax Checkers
+" let g:syntastic_javascript_checkers=['jshint']
+" let g:syntastic_html_checkers=['html']
+" let g:syntastic_scss_checkers = ['stylelint']
+" let g:syntastic_quiet_messages = { "type": "style" }
+
+" let g:ale_linters = { 'scss': ['stylelint'] }
+" let g:ale_linters_ignore = {'typescript': ['tslint']}
+"
+" "''''''''''''''''''''''''''' BEGIN aesthetics
+" if !has('gui_running')
+" 	set t_Co=256
+" endif
+"
+" "''''''''''''''''''''''''''' DARKSIDE
+" set background=dark
+"
+" """ nofrils
+" " - nofrills COMMANDS
+" " :NofrilsDark use dark theme
+" " :NofrilsLight use light theme
+" " :NofrilsSepia use sepia theme
+" " :NofrilsAcme use acme theme
+" " :NofrilsFocusNormal reset back to normal settings
+" " :NofrilsFocusCode focus only code, fade everything else
+" " :NofrilsFocusComments focus only comments, fade everything else
+"
+" function! GoNoFrils()
+" 	let g:nofrils_heavylinenumbers=1
+" 	let g:nofrils_strbackgrounds=0
+" 	let g:nofrils_heavycomments=0
+" 	let g:airline_theme = 'distinguished'
+" 	colorscheme nofrils-dark
+" 	hi LineNr ctermfg=240
+" endfunction
+" noremap <leader>d :call GoNoFrils()<CR>
+"
+" """ solarized
+" function! GoSolarized()
+" 	set background=dark
+" 	let g:solarized_termtrans = 1
+" 	let g:solarized_termcolors = 256
+" 	let g:solarized_italics = 1
+" 	let g:solarized_underline = 0
+" 	let g:solarized_bold = 0
+" 	let g:solarized_contrast = 'normal'
+" 	let g:solarized_visibility  ='normal'
+" 	let g:airline_theme = 'solarized'
+" 	colorscheme solarized
+" endfunction
+" noremap <leader>f :call GoSolarized()<CR>
+"
+"
+" "''''''''''''''''''''''''''' LIGHTSIDE
+" " set background=light
+"
+" """ kalisi
+" function! GoKalisi()
+" 	set background=light
+" 	let g:airline_theme = 'kalisi'
+" 	colorscheme kalisi
+" endfunction
+" noremap <leader>s :call GoKalisi()<CR>
+"
+" """ minimalist
+" function! GoMinimalist()
+" 	set background=light
+" 	" let g:airline_theme = 'kalisi'
+" 	colorscheme minimalist
+" endfunction
+" noremap <leader>m :call GoMinimalist()<CR>
+" """ nofrils
+" " let g:nofrils_heavylinenumbers=1
+" " let g:nofrils_strbackgrounds=0
+" " let g:nofrils_heavycomments=0
+" " let g:airline_theme = 'monochrome'
+" " colorscheme nofrils-light
+" " colorscheme nofrils-acme
+" " colorscheme nofrils-sepia
+"
+" " colorscheme soda
+" " colorscheme seoul256-light
+" " colorscheme kalisi
+"
+" """" set NOFRILS by default
+" ":call GoNoFrils()
+"
+" noremap <leader>j :color jellybeans<CR>
+" color jellybeans
+" "''''''''''''''''''''''''''' END aeshetics
+"
+"
+" "''''''''''''''''''''''''''' Furter Vimscripting
+"
+" function! HybridNumberToggle()
+" 	if (&relativenumber == 1)
+" 		set norelativenumber
+" 	else
+" 		set relativenumber
+" 		set number
+" 	endif
+" endfunc
+" noremap <leader>i :call HybridNumberToggle()<CR>
+"
+"
+" function! ToggleNumber()
+" 	if (&number == 1)
+" 		set norelativenumber
+" 		set nonumber
+" 	else
+" 		set number
+" 	endif
+" endfunc
+" noremap <leader>k :call ToggleNumber()<CR>
+"
+"
+" let nf_focus = 'normal'
+" function! ToggleFocus()
+" 	if (g:nf_focus == 'normal')
+" 		let g:nf_focus = 'comment'
+" 		:NofrilsFocusComment
+" 	else
+" 		let g:nf_focus = 'normal'
+" 		:NofrilsFocusNormal
+" 		hi LineNr ctermfg=240
+" 	endif
+" endfunc
+" noremap <leader>c :call ToggleFocus()<CR>
+"
+"
+" :au FocusLost * :set norelativenumber
+" :au FocusGained * :set relativenumber
+" :au FocusGained * :set number
+"
+" autocmd InsertEnter * :set norelativenumber
+" autocmd InsertLeave * :set relativenumber
+"
+" noremap <leader>r :so ~/.config/nvim/init.vim<CR>
