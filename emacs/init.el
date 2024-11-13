@@ -58,14 +58,18 @@
   :config
   (vertico-mode))
 
+(add-to-list 'load-path "/Users/aya/local/bin")
 (use-package eglot
   :ensure t
   :config
   (add-to-list 'eglot-server-programs '(odin-mode . ("ols")))
   :hook
   ((odin-mode . eglot-ensure)))
-
-(customize-set-variable vc-follow-symlinks t "Follow symlinks without asks")
+(use-package odin-mode
+  :load-path "locals/"
+  :mode ("\\.odin\\'" . odin-mode)
+  :hook (odin-mode . eglot))
+(add-hook 'odin-mode-hook 'eglot-ensure)
 
 (use-package jbeans-theme
   :config
