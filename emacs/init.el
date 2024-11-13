@@ -6,7 +6,8 @@
  '(custom-safe-themes
    '("fc1275617f9c8d1c8351df9667d750a8e3da2658077cfdda2ca281a2ebc914e0" "8548580c2e217d73ffe03adf961f348a05d118849cd8b6deba327d78a8cdf758" default))
  '(package-selected-packages
-   '(powerline-evil smart-mode-line-atom-one-dark-theme vertico undo-fu smart-mode-line-powerline-theme jbeans-theme evil-terminal-cursor-changer evil-collection)))
+   '(odin-mode cider flycheck-clang-tidy flycheck flymake-lua nushell-ts-mode nushell-mode dap-mode lsp-ui lsp-mode powerline-evil smart-mode-line-atom-one-dark-theme vertico undo-fu smart-mode-line-powerline-theme jbeans-theme evil-terminal-cursor-changer evil-collection))
+ '(vc-follow-symlinks t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -44,18 +45,27 @@
   :config
   (evil-mode 1))
 
-(menu-bar-mode 0)
-
-(use-package vertico
-  :config
-  (vertico-mode))
-
 ;;; Vim Bindings Everywhere else
 (use-package evil-collection
   :after evil
   :config
   (setq evil-want-integration t)
   (evil-collection-init))
+
+(menu-bar-mode 0)
+
+(use-package vertico
+  :config
+  (vertico-mode))
+
+(use-package eglot
+  :ensure t
+  :config
+  (add-to-list 'eglot-server-programs '(odin-mode . ("ols")))
+  :hook
+  ((odin-mode . eglot-ensure)))
+
+(customize-set-variable vc-follow-symlinks t "Follow symlinks without asks")
 
 (use-package jbeans-theme
   :config
