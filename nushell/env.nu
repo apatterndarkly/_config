@@ -108,8 +108,7 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/local/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/Library/Application Support/Coursier/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.modular/bin')
 
-$env.EDITOR = '/Users/aya/local/bin/emacs-nw'
-
+$env.EDITOR = "emacs-nw"
 
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
