@@ -840,6 +840,7 @@ alias kconf = ^emacs-nw /Users/aya/.config/kitty/kitty.conf
 alias zlay = ^emacs-nw /Users/aya/.config/zellij/layouts/default.kdl
 alias wconf = ^emacs-nw /Users/aya/.config/wezterm/wezterm.lua
 alias wezconf = wconf
+alias hconf = ^emacs-nw /Users/aya/.config/helix/config.toml
 
 alias nu-open = open
 alias open = ^open
