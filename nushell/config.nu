@@ -845,4 +845,10 @@ alias hconf = ^emacs-nw /Users/aya/.config/helix/config.toml
 alias nu-open = open
 alias open = ^open
 
+def murder [process_name: string = "Emacs"] {
+	let p_id = ps | where name =~ ($process_name) | get pid.0
+	($p_id) | kill $in
+	$"Killed ($process_name) \(pid: ($p_id)\)."
+}
+
 use ~/.cache/starship/init.nu
