@@ -99,6 +99,7 @@ $env.NU_PLUGIN_DIRS = [
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/usr/local/sbin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/usr/local/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/bin')
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/local/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/Cellar/ruby/3.3.5/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/opt/make/libexec/gnubin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/Library/Application Support/Coursier/bin')
