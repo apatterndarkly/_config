@@ -83,17 +83,26 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
-(use-package eglot
-  :config
-  (add-to-list 'eglot-server-programs '(odin-mode . ("ols")) '(lua-mode . ("lua-language-server")))
-  :hook
-  ((odin-mode . eglot-ensure)))
-
 (straight-use-package
  '(odin-mode :type git :host github :repo "mattt-b/odin-mode"
   :mode ("\\.odin\\'" . odin-mode)
   :hook (odin-mode . eglot)))
-(add-hook 'odin-mode-hook 'eglot-ensure)
+
+(straight-use-package
+ '(nushell-mode :type git :host github :repo "mrkkrp/nushell-mode"
+   :mode ("\\.nu\\'" . nushell-mode)
+   :hook (nushell-mode . eglot)))
+
+(use-package eglot
+  :config
+  (add-to-list 'eglot-server-programs
+			   '(odin-mode . ("ols")))
+  (add-to-list 'eglot-server-programs
+			   '(lua-mode . ("lua-language-server")))
+  (add-to-list 'eglot-server-programs
+			   (nushell-mode . ("nuls")))
+  :hook
+  ((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot)))
 
 ;; TAB-only configuration
 (use-package corfu
