@@ -93,6 +93,16 @@
    :mode ("\\.nu\\'" . nushell-mode)
    :hook (nushell-mode . eglot)))
 
+(straight-use-package
+ '(v-mode :type git :host github :repo "damon-kwok/v-mode"
+    :files ("tokens" "v-mode.el")
+    :bind-keymap
+    ("m-z" . v-menu)
+    ("<f6>" . v-menu)
+    ("c-c c-f" . v-format-buffer)
+    :mode ("\\(\\.v?v\\|\\.vsh\\)$" . v-mode)
+    :hook (v-mode . eglot)))
+
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs
@@ -101,8 +111,10 @@
 			   '(lua-mode . ("lua-language-server")))
   (add-to-list 'eglot-server-programs
 			   (nushell-mode . ("nuls")))
+  (add-to-list 'eglot-server-programs
+			   (v-mode . ("v-analyzer")))
   :hook
-  ((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot)))
+  ((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot) (v-mode . eglot)))
 
 ;; TAB-only configuration
 (use-package corfu
