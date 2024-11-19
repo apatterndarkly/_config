@@ -842,6 +842,7 @@ alias wconf = ^emacs-nw /Users/aya/.config/wezterm/wezterm.lua
 alias wezconf = wconf
 alias hconf = ^emacs-nw /Users/aya/.config/helix/config.toml
 
+
 alias nu-open = open
 alias open = ^open
 
@@ -849,6 +850,15 @@ def murder [process_name: string = "Emacs"] {
 	let p_id = ps | where name =~ ($process_name) | get pid.0
 	($p_id) | kill $in
 	$"Killed ($process_name) \(pid: ($p_id)\)."
+}
+alias mrdr = murder
+
+def --env cdd [d?: string] {
+	cd $"($env.HOME)/dev/($d)"
+}
+
+def --env cdc [d?: string] {
+	cd $"($env.HOME)/_config/($d)"
 }
 
 use ~/.cache/starship/init.nu
