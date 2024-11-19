@@ -1,0 +1,4 @@
+[[language]]
+name = "nim"
+formatter = { command = "nimpretty" }
+auto-format = true
