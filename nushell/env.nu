@@ -104,6 +104,7 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/Cellar/r
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/opt/make/libexec/gnubin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/Library/Application Support/Coursier/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.cargo/bin')
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.nimble/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/go/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.deno/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.modular/bin')
