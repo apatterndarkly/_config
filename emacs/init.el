@@ -41,6 +41,13 @@
 (eval-when-compile (require 'use-package))
 
 (setq evil-want-keybinding nil)
+(use-package evil-leader
+  :straight (:host github :repo "cofi/evil-leader")
+	:config
+	(global-evil-leader-mode)
+	(evil-leader/set-leader "<SPC>"))
+
+(setq evil-want-keybinding nil)
 (straight-use-package
  '(evil-terminal-cursor-changer :type git :host github :repo "7696122/evil-terminal-cursor-changer"))
 (unless (display-graphic-p)
@@ -62,7 +69,7 @@
   :config 
   (evil-mode 1))
 
-;;; Vim Bindings Everywhere else
+
 (use-package evil-collection
   :after evil
   :config
@@ -70,7 +77,25 @@
   (setq evil-want-integration t)
   (evil-collection-init))
 
-(menu-bar-mode 0)
+(use-package neotree
+ :straight (:host github :repo "jaypei/emacs-neotree")
+  :config
+	(evil-leader/set-key
+	"b"  'neotree-toggle
+	"n"  'neotree-project-dir)
+  (setq projectile-switch-project-action 'neotree-projectile-action)
+  (add-hook 'neotree-mode-hook
+    (lambda ()
+      (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+      (define-key evil-normal-state-local-map (kbd "I") 'neotree-hidden-file-toggle)
+      (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)
+      (define-key evil-normal-state-local-map (kbd "R") 'neotree-refresh)
+      (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
+      (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
+      (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
+      (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
+      (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
+      (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
 
 (use-package vertico
   :config
@@ -82,6 +107,8 @@
   :config
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
+
+(straight-use-package 'reformatter)
 
 (straight-use-package
  '(odin-mode :type git :host github :repo "mattt-b/odin-mode"
@@ -97,11 +124,16 @@
  '(v-mode :type git :host github :repo "damon-kwok/v-mode"
     :files ("tokens" "v-mode.el")
     :bind-keymap
-    ("m-z" . v-menu)
+    ("M-z" . v-menu)
     ("<f6>" . v-menu)
-    ("c-c c-f" . v-format-buffer)
+    ("C-c C-f" . v-format-buffer)
     :mode ("\\(\\.v?v\\|\\.vsh\\)$" . v-mode)
     :hook (v-mode . eglot)))
+
+(straight-use-package
+ '(zig-mode :type git :host github :repo "ziglang/zig-mode"
+   :mode ("\\.zig\\'" . zig-mode)
+   :hook (zig-mode . eglot)))
 
 (use-package eglot
   :config
@@ -110,9 +142,11 @@
   (add-to-list 'eglot-server-programs
 			   '(lua-mode . ("lua-language-server")))
   (add-to-list 'eglot-server-programs
-			   (nushell-mode . ("nuls")))
+			   '(nushell-mode . ("nuls")))
   (add-to-list 'eglot-server-programs
-			   (v-mode . ("v-analyzer")))
+			   '(v-mode . ("v-analyzer")))
+  (add-to-list 'eglot-server-programs
+			   '(zig-mode . ("zls")))
   :hook
   ((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot) (v-mode . eglot)))
 
@@ -128,10 +162,12 @@
   ;; Option 1: Unbind RET completely
   ;; (keymap-unset corfu-map "RET")
   ;; Option 2: Use RET only in shell modes
-  (keymap-set corfu-map "RET" `( menu-item "" nil :filter
-                                 ,(lambda (&optional _)
-                                    (and (derived-mode-p 'eshell-mode 'comint-mode)
-                                         #'corfu-send)))))
+  (keymap-set
+   corfu-map "RET" `( menu-item "" nil
+	:filter
+	,(lambda (&optional _)
+	(and (derived-mode-p 'eshell-mode 'comint-mode)
+		#'corfu-send)))))
 
 (straight-use-package
  '(corfu-terminal
@@ -139,15 +175,15 @@
    :repo "https://codeberg.org/akib/emacs-corfu-terminal.git"))
 (unless (display-graphic-p) (corfu-terminal-mode +1))
 
-(setq display-line-numbers-type 'relative)
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)
-
-(use-package jbeans-theme
-  :config
-  (load-theme 'jbeans))
-
 (straight-use-package 'smart-mode-line)
 (setq sml/theme 'dark)
 (sml/setup)
 
+(setq display-line-numbers-type 'relative)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(menu-bar-mode 0)
 (setq-default tab-width 4)
+
+(use-package jbeans-theme
+  :config
+  (load-theme 'jbeans))
