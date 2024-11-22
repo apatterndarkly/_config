@@ -833,20 +833,19 @@ $env.config = {
 
 alias em = ^emacs-nw
 alias nv = ^nvim
-alias dbq = opt/homebrew/opt/sqlite/bin
 alias gs = ^git status
-alias econf = ^emacs-nw /Users/aya/.config/emacs/init.el
-alias kconf = ^emacs-nw /Users/aya/.config/kitty/kitty.conf
-alias zlay = ^emacs-nw /Users/aya/.config/zellij/layouts/default.kdl
-alias wconf = ^emacs-nw /Users/aya/.config/wezterm/wezterm.lua
+alias econf = ^emacs-nw /home/aya/.config/emacs/init.el
+alias kconf = ^emacs-nw /home/aya/.config/kitty/kitty.conf
+alias zlay = ^emacs-nw /home/aya/.config/zellij/layouts/default.kdl
+alias wconf = ^emacs-nw /home/aya/.config/wezterm/wezterm.lua
 alias wezconf = wconf
-alias hconf = ^emacs-nw /Users/aya/.config/helix/config.toml
+alias hconf = ^emacs-nw /home/aya/.config/helix/config.toml
 
 
 alias nu-open = open
 alias open = ^open
 
-def murder [process_name: string = "Emacs"] {
+def murder [process_name: string = "emacs"] {
 	let p_id = ps | where name =~ ($process_name) | get pid.0
 	($p_id) | kill $in
 	$"Killed ($process_name) \(pid: ($p_id)\)."
@@ -861,4 +860,7 @@ def --env cdc [d?: string] {
 	cd $"($env.HOME)/_config/($d)"
 }
 
+def --env cdcsym [d?: string] {
+	cd $"($env.HOME)/.config/($d)"
+}
 use ~/.cache/starship/init.nu

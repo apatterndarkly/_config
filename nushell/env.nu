@@ -1,4 +1,4 @@
-# Nushell Environment Config File
+# NUSHELL Environment Config File
 #
 # version = "0.92.2"
 
@@ -98,17 +98,13 @@ $env.NU_PLUGIN_DIRS = [
 # macOS ARM64 (Apple Silicon)
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/usr/local/sbin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/usr/local/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/local/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/Cellar/ruby/3.3.5/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/opt/make/libexec/gnubin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/Library/Application Support/Coursier/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.cargo/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.nimble/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/go/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.deno/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.modular/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/local/bin')
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/aya/.cargo/bin')
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/aya/.nimble/bin')
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/aya/go/bin')
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/aya/.deno/bin')
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/aya/.modular/bin')
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/aya/local/bin')
 
 $env.EDITOR = "emacs-nw"
 

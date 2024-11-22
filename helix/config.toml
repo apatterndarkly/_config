@@ -1,5 +1,4 @@
-theme = "transparent_jb"
-# theme = "autumn_night"
+theme = "ayu_dark"
 
 [editor]
 line-number = "relative"

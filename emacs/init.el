@@ -18,7 +18,7 @@
 (setq package-archives 
       '(("melpa" . "https://melpa.org/packages/")
         ("elpa" . "https://elpa.gnu.org/packages/")))
-(add-to-list 'load-path "/Users/aya/local/bin")
+(add-to-list 'load-path "/home/aya/local/bin")
 
 (setq straight-use-package-by-default t)
 (defvar bootstrap-version)
@@ -60,7 +60,7 @@
   :bind (("<escape>" . keyboard-escape-quit))
   :init
   ;; allows for using cgn
-  ;; (setq evil-search-module 'evil-search)
+  (setq evil-search-module 'evil-search)
   (setq evil-motion-state-cursor 'box)
   (setq evil-visual-state-cursor 'box)
   (setq evil-normal-state-cursor 'box)
@@ -134,6 +134,14 @@
  '(zig-mode :type git :host github :repo "ziglang/zig-mode"
    :mode ("\\.zig\\'" . zig-mode)
    :hook (zig-mode . eglot)))
+
+(if (>= emacs-major-version 28)
+    (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+  (progn
+    (defun colorize-compilation-buffer ()
+      (let ((inhibit-read-only t))
+        (ansi-color-apply-on-region compilation-filter-start (point))))
+    (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)))
 
 (use-package eglot
   :config
