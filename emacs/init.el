@@ -108,6 +108,19 @@
   (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode))
 
+(setq treesit-language-source-alist
+   '((hare https://git.d2evs.net/~ecs/tree-sitter-hare)))
+
+(setq custom-hare-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'hare
+       :ts-mode 'hare-ts-mode
+       :remap '(hare-mode)
+	   :requires 'hare
+       :url "https://sr.ht/~amk/hare-ts-mode"
+       :ext "\\.ha\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-hare-tsauto-config)
+
 (straight-use-package 'reformatter)
 
 (straight-use-package
@@ -142,6 +155,11 @@
       (let ((inhibit-read-only t))
         (ansi-color-apply-on-region compilation-filter-start (point))))
     (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)))
+
+(straight-use-package
+ '(hare-mode :type git :repo "https://git.sr.ht/~laumann/hare-mode"
+   :mode ("\\.ha\\'" . hare-mode)
+   :hook (hare-mode . eglot)))
 
 (use-package eglot
   :config
