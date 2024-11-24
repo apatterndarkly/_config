@@ -110,7 +110,6 @@
 
 (setq treesit-language-source-alist
    '((hare https://git.d2evs.net/~ecs/tree-sitter-hare)))
-
 (setq custom-hare-tsauto-config
       (make-treesit-auto-recipe
        :lang 'hare
@@ -120,6 +119,20 @@
        :url "https://sr.ht/~amk/hare-ts-mode"
        :ext "\\.ha\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-hare-tsauto-config)
+
+(add-to-list 'treesit-language-source-alist
+  '(c3 https://github.com/c3lang/tree-sitter-c3))
+(setq custom-c3-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'c3
+       :ts-mode 'c3-ts-mode
+	   :requires 'c3
+       :url "https://github.com/c3lang/tree-sitter-c3"
+       :ext "\\.c3\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-c3-tsauto-config)
+
+(add-to-list 'treesit-language-source-alist '(go "https://github.com/tree-sitter/tree-sitter-go"))
+  (add-to-list 'treesit-language-source-alist '(gomod "https://github.com/camdencheek/tree-sitter-go-mod"))
 
 (straight-use-package 'reformatter)
 
@@ -173,8 +186,13 @@
 			   '(v-mode . ("v-analyzer")))
   (add-to-list 'eglot-server-programs
 			   '(zig-mode . ("zls")))
+  (add-to-list 'eglot-server-programs
+			   '(c3-ts-mode . ("c3lsp")))
+  (add-to-list 'eglot-server-programs
+			   '(go-ts-mode . ("gopls")))
   :hook
-  ((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot) (v-mode . eglot)))
+  ((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot)
+   (v-mode . eglot) (c3-ts-mode . eglot)))
 
 ;; TAB-only configuration
 (use-package corfu
