@@ -111,5 +111,15 @@ $env.EDITOR = "emacs-nw"
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
 
+$env.PKG_CONFIG_PATH = '/lib64/pkgconfig'
+$env.PKG_CONFIG_PATH = ($env.PKG_CONFIG_PATH | split row (char esep) | prepend '/usr/lib64/pkgconfig/')
+$env.PKG_CONFIG_PATH = ($env.PKG_CONFIG_PATH | split row (char esep) | prepend '/usr/share/pkgconfig/')
+$env.PKG_CONFIG_PATH = ($env.PKG_CONFIG_PATH | split row (char esep) | prepend '/usr/local/lib/pkgconfig/')
+$env.PKG_CONFIG_PATH = ($env.PKG_CONFIG_PATH | split row (char esep) | prepend '/usr/local/share/pkgconfig/')
+
+
+$env.LD_LIBRARY_PATH = '/lib64/'
+
+
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
