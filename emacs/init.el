@@ -135,6 +135,14 @@
    :mode ("\\.zig\\'" . zig-mode)
    :hook (zig-mode . eglot)))
 
+(if (>= emacs-major-version 28)
+    (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+  (progn
+    (defun colorize-compilation-buffer ()
+      (let ((inhibit-read-only t))
+        (ansi-color-apply-on-region compilation-filter-start (point))))
+    (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)))
+
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs
