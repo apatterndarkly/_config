@@ -861,4 +861,7 @@ def --env cdc [d?: string] {
 	cd $"($env.HOME)/_config/($d)"
 }
 
+def --env cdcsym [d?: string] {
+	cd $"($env.HOME)/.config/($d)"
+}
 use ~/.cache/starship/init.nu
