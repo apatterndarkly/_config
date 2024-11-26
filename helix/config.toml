@@ -1,4 +1,5 @@
-theme = "ayu_dark"
+# theme = "ayu_dark"
+theme = "monokai_pro_machine"
 
 [editor]
 line-number = "relative"
