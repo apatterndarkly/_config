@@ -174,6 +174,11 @@
    :mode ("\\.ha\\'" . hare-mode)
    :hook (hare-mode . eglot)))
 
+(straight-use-package
+ '(terra-mode :type git :host github :repo "terralang/terra-mode"
+   :mode ("\\.t\\'" . terra-mode)
+   :hook (terra-mode . eglot)))
+
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs
