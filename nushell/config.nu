@@ -865,3 +865,4 @@ def --env cdcsym [d?: string] {
 	cd $"($env.HOME)/.config/($d)"
 }
 use ~/.cache/starship/init.nu
+use ~/local/bin/bash-env.nu
