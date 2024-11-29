@@ -131,8 +131,55 @@
        :ext "\\.c3\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-c3-tsauto-config)
 
-(add-to-list 'treesit-language-source-alist '(go "https://github.com/tree-sitter/tree-sitter-go"))
-  (add-to-list 'treesit-language-source-alist '(gomod "https://github.com/camdencheek/tree-sitter-go-mod"))
+(add-to-list 'treesit-language-source-alist
+	'(go "https://github.com/tree-sitter/tree-sitter-go"))
+(add-to-list 'treesit-language-source-alist
+	'(gomod "https://github.com/camdencheek/tree-sitter-go-mod"))
+
+(add-to-list 'treesit-language-source-alist
+	'(c "https://github.com/tree-sitter/tree-sitter-c"))
+(setq custom-c-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'c
+       :ts-mode 'c-ts-mode
+       :remap '(c-mode)
+	   :requires 'c
+       :ext "\\.c\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-c-tsauto-config)
+
+(add-to-list 'treesit-language-source-alist
+	'(cpp "https://github.com/tree-sitter/tree-sitter-cpp"))
+(setq custom-cpp-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'cpp
+       :ts-mode 'cpp-ts-mode
+       :remap '(cpp-mode)
+	   :requires 'cpp
+       :ext "\\.cpp\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-cpp-tsauto-config)
+
+(add-to-list 'treesit-language-source-alist
+	'(elvish "https://github.com/elves/tree-sitter-elvish"))
+(setq custom-elvish-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'elvish
+       :ts-mode 'elvish-ts-mode
+       :remap '(elvish-mode)
+	   :requires 'elvish
+       :ext "\\.elv\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-elvish-tsauto-config)
+
+(add-to-list 'treesit-language-source-alist
+			 '(elm "https://github.com/elm-tooling/tree-sitter-elm"))
+(setq custom-elm-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'elm
+       :ts-mode 'elm-ts-mode
+       :remap '(elm-mode)
+	   :requires 'elm
+       :ext "\\.elm\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-elm-tsauto-config)
+
 
 (straight-use-package 'reformatter)
 
@@ -179,6 +226,18 @@
    :mode ("\\.t\\'" . terra-mode)
    :hook (terra-mode . eglot)))
 
+(straight-use-package
+ '(elvish-mode :type git :host github :repo "ALSchwalm/elvish-mode"
+   :mode ("\\.elv\\'" . elvish-mode)
+   :hook (elvish-mode . eglot)))
+
+
+(straight-use-package
+ '(elm-mode :type git :host github :repo "jcollard/elm-mode"
+   :mode ("\\.elm\\'" . elm-mode)
+   :hook ((elm-mode . eglot) (elm-mode . elm-format-on-save-mode))
+   :init (setq elm-sort-imports-on-save t)))
+
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs
@@ -192,12 +251,16 @@
   (add-to-list 'eglot-server-programs
 			   '(zig-mode . ("zls")))
   (add-to-list 'eglot-server-programs
-			   '(c3-ts-mode . ("c3lsp")))
+			   '(c3-mode . ("c3lsp")))
   (add-to-list 'eglot-server-programs
-			   '(go-ts-mode . ("gopls")))
+			   '(go-mode . ("gopls")))
+  (add-to-list 'eglot-server-programs
+			   '(elvish-mode . ("elvish" "-lsp")))
+  (add-to-list 'eglot-server-programs
+			   '(elm-mode . ("elm-language-server")))
   :hook
   ((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot)
-   (v-mode . eglot) (c3-ts-mode . eglot)))
+   (v-mode . eglot) (c3-mode . eglot) (elvish-mode . eglot) (elm-mode . eglot)))
 
 ;; TAB-only configuration
 (use-package corfu
