@@ -837,6 +837,7 @@ alias dbq = opt/homebrew/opt/sqlite/bin
 alias gs = ^git status
 alias econf = ^emacs-nw /Users/aya/.config/emacs/init.el
 alias kconf = ^emacs-nw /Users/aya/.config/kitty/kitty.conf
+alias zconf = ^emacs-nw /Users/aya/.config/zellij/config.kdl
 alias zlay = ^emacs-nw /Users/aya/.config/zellij/layouts/default.kdl
 alias wconf = ^emacs-nw /Users/aya/.config/wezterm/wezterm.lua
 alias wezconf = wconf
