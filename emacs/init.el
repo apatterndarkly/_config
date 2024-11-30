@@ -170,7 +170,7 @@
 (add-to-list 'treesit-auto-recipe-list custom-elvish-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
-			 '(elm "https://github.com/elm-tooling/tree-sitter-elm"))
+  '(elm "https://github.com/elm-tooling/tree-sitter-elm"))
 (setq custom-elm-tsauto-config
       (make-treesit-auto-recipe
        :lang 'elm
@@ -180,6 +180,16 @@
        :ext "\\.elm\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-elm-tsauto-config)
 
+(add-to-list 'treesit-language-source-alist
+  '(rust "https://github.com/tree-sitter/tree-sitter-rust"))
+(setq custom-rust-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'rust
+       :ts-mode 'rust-ts-mode
+       :remap '(rust-mode)
+	   :requires 'rust
+       :ext "\\.rs\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-rust-tsauto-config)
 
 (straight-use-package 'reformatter)
 
@@ -238,6 +248,16 @@
    :hook ((elm-mode . eglot) (elm-mode . elm-format-on-save-mode))
    :init (setq elm-sort-imports-on-save t)))
 
+(straight-use-package
+ '(rust-mode :type git :host github :repo "rust-lang/rust-mode"
+   :mode ("\\.rs\\'" . rust-mode)))
+
+(setq rustic-lsp-client 'eglot)
+(straight-use-package
+  '(rustic :type git :host github :repo "emacs-rustic/rustic"))
+(with-eval-after-load 'rust-mode
+  (require 'rustic nil t))
+
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs
@@ -258,9 +278,12 @@
 			   '(elvish-mode . ("elvish" "-lsp")))
   (add-to-list 'eglot-server-programs
 			   '(elm-mode . ("elm-language-server")))
+  (add-to-list 'eglot-server-programs
+			   '(rust-mode . ("rust-analyzer")))
   :hook
   ((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot)
-   (v-mode . eglot) (c3-mode . eglot) (elvish-mode . eglot) (elm-mode . eglot)))
+   (v-mode . eglot) (c3-mode . eglot) (elvish-mode . eglot)
+   (elm-mode . eglot) (rust-mode . eglot)))
 
 ;; TAB-only configuration
 (use-package corfu
@@ -299,3 +322,16 @@
 (use-package jbeans-theme
   :config
   (load-theme 'jbeans))
+
+;;(use-package tron-legacy-theme
+;;  :config
+;;  (setq tron-legacy-theme-vivid-cursor t)
+;;  (load-theme 'tron-legacy t))
+
+(defun set-background-for-terminal (&optional frame)
+  (or frame (setq frame (selected-frame)))
+  "unsets the background color in terminal mode"
+  (unless (display-graphic-p frame)
+    (set-face-background 'default "unspecified-bg" frame)))
+(add-hook 'after-make-frame-functions 'set-background-for-terminal)
+(add-hook 'window-setup-hook 'set-background-for-terminal)
