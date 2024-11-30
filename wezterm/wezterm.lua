@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config.color_scheme = 'Trim Yer Beard (terminal.sexy)'
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.90
 config.font_size = 18.0
 config.line_height = 1.4
 config.font = wezterm.font 'D2CodingLigature Nerd Font'
