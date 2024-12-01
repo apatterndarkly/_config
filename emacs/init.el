@@ -6,7 +6,7 @@
  '(custom-safe-themes
    '("07885feecd236e4ba3837e7ff15753d47694e1f9a8049400c114b3298285534e" "c3bcebe2117cbd3ab7e2ccb8536c6da089bf7efbdbac697e134205b5729ca358" "5e1d1564b6a2435a2054aa345e81c89539a72c4cad8536cfe02583e0b7d5e2fa" "f747c4004e38bcdc131649a90325c00d246bb7dc73bc6ab6e0e7ab5489da8459" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" "4e8d50bd0814a2f79ac9306d2860aac88eca1e1052f5061d650a58b8256663b4" "31dc824dd1bd213bbfc55dcbfd9b43dbd076a6c26c127f72015d1b32fb788330" "c38ca564fb26ae0414ed076b9a8462cdfbb1e20eb651001bfaa789e842fdbfdd" "ebbd4bbb0f017cb09f7a3b1363b83dfde0c5f4970cda2705419457366cd2de91" "d3a63c40fddcd2369b7465beca48ddd61fa8e980e9fa88adc52c3cfc78b2b352" "508eea8d6eb720b0d1d532bb682837803d35f602b03739836eb9a39622119c24" "3b69ddebc3b1386c63e70afa0eca90d1a775c52ad144d16df932400f3afe1c30" "ffa1f10eda4be15d8c6b441fd60ae3fb9f65aa03e0cd0955b59864cbad0baf8d" "9312a0692efc799e797c6689b3216c45d80e460184f666fffdb6dab65d8d4947" "7b8f5bbdc7c316ee62f271acf6bcd0e0b8a272fdffe908f8c920b0ba34871d98" "062e6ec918ed89d5d9a342dbbefd99e8690c5514c6698a78fc25f259972e9242" "fc1275617f9c8d1c8351df9667d750a8e3da2658077cfdda2ca281a2ebc914e0" "8548580c2e217d73ffe03adf961f348a05d118849cd8b6deba327d78a8cdf758" default))
  '(package-selected-packages
-   '(lua-mode corfu treesit-auto odin-mode cider flycheck-clang-tidy flycheck flymake-lua nushell-ts-mode nushell-mode dap-mode lsp-ui lsp-mode powerline-evil smart-mode-line-atom-one-dark-theme vertico undo-fu smart-mode-line-powerline-theme jbeans-theme evil-terminal-cursor-changer evil-collection))
+   '(corfu treesit-auto odin-mode cider flycheck-clang-tidy flycheck flymake-lua nushell-ts-mode nushell-mode dap-mode lsp-ui lsp-mode powerline-evil smart-mode-line-atom-one-dark-theme vertico undo-fu smart-mode-line-powerline-theme jbeans-theme evil-terminal-cursor-changer evil-collection))
  '(vc-follow-symlinks t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -40,12 +40,19 @@
 (straight-use-package 'use-package)
 (eval-when-compile (require 'use-package))
 
+(defun comment-or-uncomment-line-or-region ()
+  (interactive)
+  (if (region-active-p)
+      (comment-or-uncomment-region (region-beginning) (region-end))
+    (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
+
 (setq evil-want-keybinding nil)
 (use-package evil-leader
   :straight (:host github :repo "cofi/evil-leader")
 	:config
 	(global-evil-leader-mode)
-	(evil-leader/set-leader "<SPC>"))
+	(evil-leader/set-leader "<SPC>")
+	(evil-leader/set-key "/" 'comment-or-uncomment-line-or-region))
 
 (setq evil-want-keybinding nil)
 (straight-use-package
@@ -68,7 +75,6 @@
   (setq evil-emacs-state-cursor  'hbar)
   :config 
   (evil-mode 1))
-
 
 (use-package evil-collection
   :after evil
@@ -96,6 +102,7 @@
       (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
       (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
       (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
+
 
 (use-package vertico
   :config
@@ -191,6 +198,17 @@
        :ext "\\.rs\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-rust-tsauto-config)
 
+(add-to-list 'treesit-language-source-alist
+  '(rust "https://github.com/tree-sitter-grammars/tree-sitter-lua"))
+(setq custom-lua-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'lua
+       :ts-mode 'lua-ts-mode
+       :remap '(lua-mode)
+	   :requires 'lua
+       :ext "\\.lua\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-lua-tsauto-config)
+
 (straight-use-package 'reformatter)
 
 (straight-use-package
@@ -246,6 +264,11 @@
    :mode ("\\.elm\\'" . elm-mode)
    :hook ((elm-mode . eglot) (elm-mode . elm-format-on-save-mode))
    :init (setq elm-sort-imports-on-save t)))
+
+(straight-use-package
+'(lua-mode :type git :host github :repo "mmerrr/lua-mode"
+			:mode ("\\.lua\\'" . lua-mode)
+			:hook (lua-mode . eglot)))
 
 (straight-use-package
  '(rust-mode :type git :host github :repo "rust-lang/rust-mode"
@@ -389,4 +412,5 @@
 ;;(straight-use-package
 ;; '(emacs-color-themes :type git :host github :repo "owainlewis/emacs-color-themes"
 ;;  :config
-;;  (load-theme 'hickey))) ;; brin dorsey fogus graham granger hickey junio mccarthy odersky ritchie spolsky wilson [sublime-themes]
+;;  (load-theme 'hickey))) ;; brin dorsey fogus graham granger hickey junio mccarthy
+                           ;; odersky ritchie spolsky wilson [sublime-themes]
