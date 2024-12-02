@@ -223,7 +223,7 @@
 (add-to-list 'treesit-auto-recipe-list custom-julia-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
-  '(ruby "https://github.com/tree-sitter/tree-sitter-julia"))
+  '(ruby "https://github.com/tree-sitter/tree-sitter-ruby"))
 (setq custom-ruby-tsauto-config
       (make-treesit-auto-recipe
        :lang 'ruby
@@ -394,6 +394,8 @@
 (unless (display-graphic-p) (corfu-terminal-mode +1))
 
 (straight-use-package 'smart-mode-line)
+(setq-default column-number-mode t)
+(display-time-mode t)
 (setq sml/theme 'dark)
 (sml/setup)
 
