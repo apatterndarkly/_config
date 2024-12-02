@@ -108,6 +108,8 @@
   :config
   (vertico-mode))
 
+(straight-use-package 'vterm)
+
 (use-package treesit-auto
   :custom
   (treesit-auto-install 'prompt)
@@ -199,7 +201,7 @@
 (add-to-list 'treesit-auto-recipe-list custom-rust-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
-  '(rust "https://github.com/tree-sitter-grammars/tree-sitter-lua"))
+  '(lua "https://github.com/tree-sitter-grammars/tree-sitter-lua"))
 (setq custom-lua-tsauto-config
       (make-treesit-auto-recipe
        :lang 'lua
@@ -208,6 +210,17 @@
 	   :requires 'lua
        :ext "\\.lua\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-lua-tsauto-config)
+
+(add-to-list 'treesit-language-source-alist
+  '(julia "https://github.com/tree-sitter/tree-sitter-julia"))
+(setq custom-julia-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'julia
+       :ts-mode 'julia-ts-mode
+       :remap '(julia-mode)
+	   :requires 'julia
+       :ext "\\.julia\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-julia-tsauto-config)
 
 (straight-use-package 'reformatter)
 
@@ -266,7 +279,7 @@
    :init (setq elm-sort-imports-on-save t)))
 
 (straight-use-package
-'(lua-mode :type git :host github :repo "mmerrr/lua-mode"
+'(lua-mode :type git :host github :repo "immerrr/lua-mode"
 			:mode ("\\.lua\\'" . lua-mode)
 			:hook (lua-mode . eglot)))
 
@@ -279,6 +292,33 @@
   '(rustic :type git :host github :repo "emacs-rustic/rustic"))
 (with-eval-after-load 'rust-mode
   (require 'rustic nil t))
+
+(straight-use-package
+ '(julia-mode :mode ("\\.jl\\'" . julia-mode)))
+(straight-use-package
+ '(julia-repl :hook (julia-mode . julia-repl-mode)
+  ;; :init
+  ;; (setenv "JULIA_NUM_THREADS" "8")
+  ;; :config
+  ;; ;; Set the terminal backend
+  ;; (julia-repl-set-terminal-backend 'vterm)
+  ;; ;; Keybindings for quickly sending code to the REPL
+  ;; (define-key julia-repl-mode-map (kbd "<C-RET>") 'my/julia-repl-send-cell)
+  ;; (define-key julia-repl-mode-map (kbd "<M-RET>") 'julia-repl-send-line)
+  ;; (define-key julia-repl-mode-map (kbd "<S-return>") 'julia-repl-send-buffer))
+))
+;; (defun my/julia-repl-send-cell() 
+;;   ;; "Send the current julia cell (delimited by ###) to the julia shell"
+;;   (interactive)
+;;   (save-excursion (setq cell-begin (if (re-search-backward "^###" nil t) (point) (point-min))))
+;;   (save-excursion (setq cell-end (if (re-search-forward "^###" nil t) (point) (point-max))))
+;;   (set-mark cell-begin)
+;;   (goto-char cell-end)
+;;   (julia-repl-send-region-or-line)
+;;   (next-line))
+;; ;; Allow the use of evil jump list C-o to jump back to where we were before executing the cell
+;; (evil-add-command-properties #'my/julia-repl-send-cell :jump t)
+
 
 (use-package eglot
   :config
@@ -302,10 +342,14 @@
 			   '(elm-mode . ("elm-language-server")))
   (add-to-list 'eglot-server-programs
 			   '(rust-mode . ("rust-analyzer")))
+  ;; (add-to-list 'eglot-server-programs
+  ;; 			   '(julia-mode . ("lsp-julia")))
   :hook
   ((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot)
    (v-mode . eglot) (c3-mode . eglot) (elvish-mode . eglot)
-   (elm-mode . eglot) (rust-mode . eglot)))
+   (elm-mode . eglot) (rust-mode . eglot)
+;; (julia-mode . eglot)
+ ))
 
 ;; TAB-only configuration
 (use-package corfu
