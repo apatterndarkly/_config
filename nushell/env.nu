@@ -117,3 +117,6 @@ $env.EDITOR = "emacs-nw"
 
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
+
+$env.ASDF_DIR = (brew --prefix asdf | str trim | into string | path join 'libexec')
+source /opt/homebrew/opt/asdf/libexec/asdf.nu
