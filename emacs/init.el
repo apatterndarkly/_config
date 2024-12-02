@@ -222,6 +222,17 @@
        :ext "\\.julia\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-julia-tsauto-config)
 
+(add-to-list 'treesit-language-source-alist
+  '(ruby "https://github.com/tree-sitter/tree-sitter-julia"))
+(setq custom-ruby-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'ruby
+       :ts-mode 'ruby-ts-mode
+       :remap '(enh-ruby-mode)
+	   :requires 'ruby
+       :ext "\\.ruby\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-ruby-tsauto-config)
+
 (straight-use-package 'reformatter)
 
 (straight-use-package
@@ -319,6 +330,10 @@
 ;; ;; Allow the use of evil jump list C-o to jump back to where we were before executing the cell
 ;; (evil-add-command-properties #'my/julia-repl-send-cell :jump t)
 
+(straight-use-package
+ '(enh-ruby-mode :type git :host github :repo "zenspider/enhanced-ruby-mode"
+   :mode
+   ("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))) 
 
 (use-package eglot
   :config
@@ -342,12 +357,14 @@
 			   '(elm-mode . ("elm-language-server")))
   (add-to-list 'eglot-server-programs
 			   '(rust-mode . ("rust-analyzer")))
+  (add-to-list 'eglot-server-programs
+			   '(enh-ruby-mode . ("ruby-lsp")))
   ;; (add-to-list 'eglot-server-programs
   ;; 			   '(julia-mode . ("lsp-julia")))
   :hook
   ((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot)
    (v-mode . eglot) (c3-mode . eglot) (elvish-mode . eglot)
-   (elm-mode . eglot) (rust-mode . eglot)
+   (elm-mode . eglot) (rust-mode . eglot) (enh-ruby-mode . eglot)
 ;; (julia-mode . eglot)
  ))
 
