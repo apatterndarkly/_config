@@ -853,6 +853,7 @@ def murder [process_name: string = "Emacs"] {
 	$"Killed ($process_name) \(pid: ($p_id)\)."
 }
 alias mrdr = murder
+alias redrum = murder
 
 def --env cdd [d?: string] {
 	cd $"($env.HOME)/dev/($d)"
