@@ -1,0 +1,1 @@
+/Users/aya/.fzf/shell/key-bindings.fish
