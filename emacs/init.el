@@ -46,13 +46,32 @@
       (comment-or-uncomment-region (region-beginning) (region-end))
     (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
 
+(use-package vterm-toggle
+  :straight (:type git :host github :repo "jixiuf/vterm-toggle")
+	:config
+	(setq vterm-toggle-fullscreen-p nil)
+	(add-to-list 'display-buffer-alist
+		'((lambda (buffer-or-name _)
+			(let ((buffer (get-buffer buffer-or-name)))
+			(with-current-buffer buffer
+				(or (equal major-mode 'vterm-mode)
+					(string-prefix-p vterm-buffer-name (buffer-name buffer))))))
+		(display-buffer-reuse-window display-buffer-at-bottom)
+		(display-buffer-reuse-window display-buffer-in-direction)
+		(direction . bottom)
+		(dedicated . t) 
+		(reusable-frames . visible)
+		(window-height . 0.3))))
+
+
 (setq evil-want-keybinding nil)
 (use-package evil-leader
   :straight (:host github :repo "cofi/evil-leader")
 	:config
 	(global-evil-leader-mode)
 	(evil-leader/set-leader "<SPC>")
-	(evil-leader/set-key "/" 'comment-or-uncomment-line-or-region))
+	(evil-leader/set-key "/" 'comment-or-uncomment-line-or-region)
+	(evil-leader/set-key "v" 'vterm-toggle-cd))
 
 (setq evil-want-keybinding nil)
 (straight-use-package
