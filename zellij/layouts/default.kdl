@@ -1,7 +1,7 @@
 layout {
     pane split_direction="vertical" {
         pane split_direction="horizontal" size="40%" {
-            pane name="elvish" split_direction="vertical" size="40%" command="elvish"
+            pane name="fish" split_direction="vertical" size="40%" command="fish"
             pane name="nushell" split_direction="vertical" size="40%" command="nu"
             pane name="bash" split_direction="vertical" size="20%" command="bash"
         }
