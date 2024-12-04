@@ -125,7 +125,6 @@
       (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
       (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
 
-
 (use-package vertico
   :config
   (vertico-mode))
@@ -147,7 +146,7 @@
        :ts-mode 'hare-ts-mode
        :remap '(hare-mode)
 	   :requires 'hare
-       :url "https://sr.ht/~amk/hare-ts-mode"
+       :url "https://git.sr.ht/~amk/hare-ts-mode"
        :ext "\\.ha\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-hare-tsauto-config)
 
@@ -234,17 +233,6 @@
 (add-to-list 'treesit-auto-recipe-list custom-lua-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
-  '(julia "https://github.com/tree-sitter/tree-sitter-julia"))
-(setq custom-julia-tsauto-config
-      (make-treesit-auto-recipe
-       :lang 'julia
-       :ts-mode 'julia-ts-mode
-       :remap '(julia-mode)
-	   :requires 'julia
-       :ext "\\.julia\\'"))
-(add-to-list 'treesit-auto-recipe-list custom-julia-tsauto-config)
-
-(add-to-list 'treesit-language-source-alist
   '(ruby "https://github.com/tree-sitter/tree-sitter-ruby"))
 (setq custom-ruby-tsauto-config
       (make-treesit-auto-recipe
@@ -254,6 +242,17 @@
 	   :requires 'ruby
        :ext "\\.ruby\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-ruby-tsauto-config)
+
+(add-to-list 'treesit-language-source-alist
+  '(fennel "https://github.com/alexmozaidze/tree-sitter-fennel"))
+(setq custom-fennel-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'fennel
+       :ts-mode 'fennel-ts-mode
+       :remap '(fennel-mode)
+	   :requires 'fennel
+       :ext "\\.fnl\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-fennel-tsauto-config)
 
 (straight-use-package 'reformatter)
 
@@ -327,35 +326,14 @@
   (require 'rustic nil t))
 
 (straight-use-package
- '(julia-mode :mode ("\\.jl\\'" . julia-mode)))
-(straight-use-package
- '(julia-repl :hook (julia-mode . julia-repl-mode)
-  ;; :init
-  ;; (setenv "JULIA_NUM_THREADS" "8")
-  ;; :config
-  ;; ;; Set the terminal backend
-  ;; (julia-repl-set-terminal-backend 'vterm)
-  ;; ;; Keybindings for quickly sending code to the REPL
-  ;; (define-key julia-repl-mode-map (kbd "<C-RET>") 'my/julia-repl-send-cell)
-  ;; (define-key julia-repl-mode-map (kbd "<M-RET>") 'julia-repl-send-line)
-  ;; (define-key julia-repl-mode-map (kbd "<S-return>") 'julia-repl-send-buffer))
-))
-;; (defun my/julia-repl-send-cell() 
-;;   ;; "Send the current julia cell (delimited by ###) to the julia shell"
-;;   (interactive)
-;;   (save-excursion (setq cell-begin (if (re-search-backward "^###" nil t) (point) (point-min))))
-;;   (save-excursion (setq cell-end (if (re-search-forward "^###" nil t) (point) (point-max))))
-;;   (set-mark cell-begin)
-;;   (goto-char cell-end)
-;;   (julia-repl-send-region-or-line)
-;;   (next-line))
-;; ;; Allow the use of evil jump list C-o to jump back to where we were before executing the cell
-;; (evil-add-command-properties #'my/julia-repl-send-cell :jump t)
-
-(straight-use-package
  '(enh-ruby-mode :type git :host github :repo "zenspider/enhanced-ruby-mode"
    :mode
    ("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))) 
+
+(straight-use-package
+ '(fennel-mode :type git :host github :repo "emacsmirror/fennel-mode"
+			   :mode ("\\.fnl\\'" . fennel-mode)
+			   :hook (fennel-mode . eglot)))
 
 (use-package eglot
   :config
@@ -381,14 +359,13 @@
 			   '(rust-mode . ("rust-analyzer")))
   (add-to-list 'eglot-server-programs
 			   '(enh-ruby-mode . ("ruby-lsp")))
-  ;; (add-to-list 'eglot-server-programs
-  ;; 			   '(julia-mode . ("lsp-julia")))
+  (add-to-list 'eglot-server-programs
+			   '(fennel-mode . ("fennel-ls")))
   :hook
   ((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot)
    (v-mode . eglot) (c3-mode . eglot) (elvish-mode . eglot)
    (elm-mode . eglot) (rust-mode . eglot) (enh-ruby-mode . eglot)
-;; (julia-mode . eglot)
- ))
+   (fennel-mode . eglot)))
 
 ;; TAB-only configuration
 (use-package corfu
