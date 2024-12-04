@@ -839,6 +839,7 @@ alias econf = ^emacs-nw /Users/aya/.config/emacs/init.el
 alias kconf = ^emacs-nw /Users/aya/.config/kitty/kitty.conf
 alias zconf = ^emacs-nw /Users/aya/.config/zellij/config.kdl
 alias zlay = ^emacs-nw /Users/aya/.config/zellij/layouts/default.kdl
+alias zup = ^zellij
 alias wconf = ^emacs-nw /Users/aya/.config/wezterm/wezterm.lua
 alias wezconf = wconf
 alias hconf = ^emacs-nw /Users/aya/.config/helix/config.toml
