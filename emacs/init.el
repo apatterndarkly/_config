@@ -71,7 +71,10 @@
 	(global-evil-leader-mode)
 	(evil-leader/set-leader "<SPC>")
 	(evil-leader/set-key "/" 'comment-or-uncomment-line-or-region)
-	(evil-leader/set-key "v" 'vterm-toggle-cd))
+	(evil-leader/set-key "v" 'vterm-toggle-cd)
+	(evil-leader/set-key "c" 'calendar)
+	(evil-leader/set-key "o" 'org-mode)
+	(evil-leader/set-key "e" 'eval-last-sexp))
 
 (setq evil-want-keybinding nil)
 (straight-use-package
@@ -421,7 +424,7 @@
 (setq display-line-numbers-type 'relative)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (menu-bar-mode 0)
-(setq-default tab-width 4)
+(setq-default tab-width 2)
 
 ;;(use-package jbeans-theme
 ;;  :config
