@@ -1,0 +1,16 @@
+[
+	{
+		"context": "Editor && vim_mode == insert",
+		"bindings": {
+			"k j": [
+				"vim::SwitchMode",
+				"Normal"
+			]
+		}
+	},
+	{
+		"bindings": {
+			"ctrl-f": "terminal_panel::ToggleFocus"
+		}
+	}
+]
