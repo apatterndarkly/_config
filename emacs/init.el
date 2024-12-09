@@ -4,9 +4,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("07885feecd236e4ba3837e7ff15753d47694e1f9a8049400c114b3298285534e" "c3bcebe2117cbd3ab7e2ccb8536c6da089bf7efbdbac697e134205b5729ca358" "5e1d1564b6a2435a2054aa345e81c89539a72c4cad8536cfe02583e0b7d5e2fa" "f747c4004e38bcdc131649a90325c00d246bb7dc73bc6ab6e0e7ab5489da8459" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" "4e8d50bd0814a2f79ac9306d2860aac88eca1e1052f5061d650a58b8256663b4" "31dc824dd1bd213bbfc55dcbfd9b43dbd076a6c26c127f72015d1b32fb788330" "c38ca564fb26ae0414ed076b9a8462cdfbb1e20eb651001bfaa789e842fdbfdd" "ebbd4bbb0f017cb09f7a3b1363b83dfde0c5f4970cda2705419457366cd2de91" "d3a63c40fddcd2369b7465beca48ddd61fa8e980e9fa88adc52c3cfc78b2b352" "508eea8d6eb720b0d1d532bb682837803d35f602b03739836eb9a39622119c24" "3b69ddebc3b1386c63e70afa0eca90d1a775c52ad144d16df932400f3afe1c30" "ffa1f10eda4be15d8c6b441fd60ae3fb9f65aa03e0cd0955b59864cbad0baf8d" "9312a0692efc799e797c6689b3216c45d80e460184f666fffdb6dab65d8d4947" "7b8f5bbdc7c316ee62f271acf6bcd0e0b8a272fdffe908f8c920b0ba34871d98" "062e6ec918ed89d5d9a342dbbefd99e8690c5514c6698a78fc25f259972e9242" "fc1275617f9c8d1c8351df9667d750a8e3da2658077cfdda2ca281a2ebc914e0" "8548580c2e217d73ffe03adf961f348a05d118849cd8b6deba327d78a8cdf758" default))
+	 '("31dc824dd1bd213bbfc55dcbfd9b43dbd076a6c26c127f72015d1b32fb788330" "fc1275617f9c8d1c8351df9667d750a8e3da2658077cfdda2ca281a2ebc914e0" default))
  '(package-selected-packages
-   '(corfu treesit-auto odin-mode cider flycheck-clang-tidy flycheck flymake-lua nushell-ts-mode nushell-mode dap-mode lsp-ui lsp-mode powerline-evil smart-mode-line-atom-one-dark-theme vertico undo-fu smart-mode-line-powerline-theme jbeans-theme evil-terminal-cursor-changer evil-collection))
+	 '(corfu treesit-auto odin-mode cider flycheck-clang-tidy flycheck flymake-lua nushell-ts-mode nushell-mode dap-mode lsp-ui lsp-mode powerline-evil smart-mode-line-atom-one-dark-theme vertico undo-fu smart-mode-line-powerline-theme jbeans-theme evil-terminal-cursor-changer evil-collection))
  '(vc-follow-symlinks t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -15,7 +15,7 @@
  ;; If there is more than one, they won't work right.
  )
 
-(setq package-archives 
+(setq package-archives
 			'(("melpa" . "https://melpa.org/packages/")
 				("elpa" . "https://elpa.gnu.org/packages/")))
 (add-to-list 'load-path "/Users/aya/local/bin")
@@ -61,8 +61,8 @@
 								 (display-buffer-reuse-window display-buffer-at-bottom)
 								 (display-buffer-reuse-window display-buffer-in-direction)
 								 (direction . bottom)
-								 (dedicated . t) 
-								 (reusable-frames . visible)
+								 (dedicated . t)
+								 (reusable-framesk. visible)
 								 (window-height . 0.3))))
 
 
@@ -101,7 +101,7 @@
   (setq evil-normal-state-cursor 'box)
   (setq evil-insert-state-cursor 'bar)
   (setq evil-emacs-state-cursor  'hbar)
-  :config 
+  :config
   (evil-mode 1))
 
 (use-package evil-collection
@@ -203,17 +203,6 @@
 			 :requires 'cpp
        :ext "\\.cpp\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-cpp-tsauto-config)
-
-(add-to-list 'treesit-language-source-alist
-						 '(elvish "https://github.com/elves/tree-sitter-elvish"))
-(setq custom-elvish-tsauto-config
-      (make-treesit-auto-recipe
-       :lang 'elvish
-       :ts-mode 'elvish-ts-mode
-       :remap '(elvish-mode)
-			 :requires 'elvish
-       :ext "\\.elv\\'"))
-(add-to-list 'treesit-auto-recipe-list custom-elvish-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
 						 '(elm "https://github.com/elm-tooling/tree-sitter-elm"))
@@ -337,12 +326,16 @@
 (use-package enh-ruby-mode
 	:straight (:type git :host github :repo "zenspider/enhanced-ruby-mode")
   :mode
-  ("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode)) 
+  ("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))
 
 (use-package fennel-mode
 	:straight (:type git :host github :repo "emacsmirror/fennel-mode")
 	:mode ("\\.fnl\\|.fennelrc$" . fennel-mode)
 	:hook (fennel-mode . eglot))
+
+(use-package kdl-mode
+	:straight (:type git :host github :repo "apatterndarkly/kdl-mode")
+	:mode ("\\.kdl$" . kdl-mode))
 
 (use-package eglot
   :config
@@ -361,8 +354,6 @@
   (add-to-list 'eglot-server-programs
 							 '(go-mode . ("gopls")))
   (add-to-list 'eglot-server-programs
-							 '(elvish-mode . ("elvish" "-lsp")))
-  (add-to-list 'eglot-server-programs
 							 '(elm-mode . ("elm-language-server")))
   (add-to-list 'eglot-server-programs
 							 '(rust-mode . ("rust-analyzer")))
@@ -370,11 +361,10 @@
 							 '(enh-ruby-mode . ("ruby-lsp")))
   (add-to-list 'eglot-server-programs
 							 '(fennel-mode . ("fennel-ls")))
-  :hook
-  ((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot)
-   (v-mode . eglot) (c3-mode . eglot) (elvish-mode . eglot)
-   (elm-mode . eglot) (rust-mode . eglot) (enh-ruby-mode . eglot)
-   (fennel-mode . eglot)))
+	:hook
+	((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot) (v-mode . eglot)
+	 (zig-mode . eglot) (c3-mode . eglot) (go-mode . eglot) (elm-mode . eglot)
+	 (rust-mode . eglot) (enh-ruby-mode . eglot) (fennel-mode . eglot)))
 
 ;; TAB-only configuration
 (use-package corfu
@@ -411,8 +401,23 @@
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (menu-bar-mode 0)
 (setq-default tab-width 2)
-(add-hook 'prog-mode-hook (display-fill-column-indicator-mode)
-					(setopt display-fill-column-indicator-column 80))        
+(setq-default display-fill-column-indicator-column 80)
+(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+(set-face-attribute 'fill-column-indicator nil :foreground "black")
+(setq show-trailing-whitespace t)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(use-package timu-spacegrey-theme
+	:config
+	(load-theme 'timu-spacegrey))
+
+(defun set-background-for-terminal (&optional frame)
+	(or frame (setq frame (selected-frame)))
+	"unsets the background color in terminal mode"
+	(unless (display-graphic-p frame)
+		(set-face-background 'default "unspecified-bg" frame)))
+(add-hook 'after-make-frame-functions 'set-background-for-terminal)
+(add-hook 'window-setup-hook 'set-background-for-terminal)
 
 ;;(use-package jbeans-theme
 ;;  :config
@@ -426,9 +431,6 @@
 ;;(use-package seti-theme
 ;;  :config
 ;;  (load-theme 'seti))
-(use-package timu-spacegrey-theme
-	:config
-	(load-theme 'timu-spacegrey))
 ;;(use-package jazz-theme
 ;;  :config
 ;;  (load-theme 'jazz))
@@ -456,15 +458,6 @@
 ;;(use-package liso-theme
 ;;  :config
 ;;  (load-theme 'liso))
-
-(defun set-background-for-terminal (&optional frame)
-	(or frame (setq frame (selected-frame)))
-	"unsets the background color in terminal mode"
-	(unless (display-graphic-p frame)
-		(set-face-background 'default "unspecified-bg" frame)))
-(add-hook 'after-make-frame-functions 'set-background-for-terminal)
-(add-hook 'window-setup-hook 'set-background-for-terminal)
-
 ;;(use-package timu-rouge-theme
 ;;  :config
 ;;  (load-theme 'timu-rouge))
