@@ -1,0 +1,8 @@
+~/.bash_profile: simply load .profile followed by .bashrc (rc if interactive)
+~/.profile: use for non bash-specific: env vars / PATH
+~/.bashrc: interactives e.g. prompt, EDITOR, aliases
+
+- anything needed by graphical applications OR sh (or bash invoked as sh) MUST be in ~/.profile
+- anything that should be available to login shells should go in ~/.profile
+- do not output from ~/.bashrc
+- remove ~/.bash_login 
