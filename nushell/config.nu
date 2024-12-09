@@ -835,6 +835,8 @@ alias em = ^emacs-nw
 alias nv = ^nvim
 alias dbq = opt/homebrew/opt/sqlite/bin
 alias gs = ^git status
+alias gco = ^git checkout
+alias gsw = ^git switch
 alias econf = ^emacs-nw /Users/aya/.config/emacs/init.el
 alias kconf = ^emacs-nw /Users/aya/.config/kitty/kitty.conf
 alias zconf = ^emacs-nw /Users/aya/.config/zellij/config.kdl
@@ -843,6 +845,8 @@ alias zup = ^zellij
 alias wconf = ^emacs-nw /Users/aya/.config/wezterm/wezterm.lua
 alias wezconf = wconf
 alias hconf = ^emacs-nw /Users/aya/.config/helix/config.toml
+alias nuconf = ^emacs-nw /Users/aya/.config/nushell/config.nu
+alias nuenv = ^emacs-nw /Users/aya/.config/nushell/env.nu
 
 
 alias nu-open = open
