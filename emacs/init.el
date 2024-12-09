@@ -131,6 +131,8 @@
 
 (straight-use-package 'vterm)
 
+(straight-use-package '(magit :type git :host github :repo "magit/magit"))
+
 (use-package treesit-auto
   :custom
   (treesit-auto-install 'prompt)
