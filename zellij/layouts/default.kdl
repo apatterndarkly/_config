@@ -1,10 +1,10 @@
 layout {
     pane split_direction="vertical" {
-        pane split_direction="horizontal" size="40%" {
+        pane split_direction="horizontal" {
             pane name="bash" split_direction="vertical" size="30%" command="bash"
             pane name="nushell" split_direction="vertical" size="70%" command="nu"
         }
-        pane name="nushell" command="nu" focus=true
+        pane name="nushell" command="nu" focus=true size=120
     }
     pane size=1 borderless=true {
         plugin location="zellij:status-bar"
