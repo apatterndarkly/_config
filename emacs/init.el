@@ -16,11 +16,12 @@
  )
 
 (setq package-archives 
-      '(("melpa" . "https://melpa.org/packages/")
-        ("elpa" . "https://elpa.gnu.org/packages/")))
+			'(("melpa" . "https://melpa.org/packages/")
+				("elpa" . "https://elpa.gnu.org/packages/")))
 (add-to-list 'load-path "/Users/aya/local/bin")
 
 (setq straight-use-package-by-default t)
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name
@@ -51,22 +52,23 @@
 	:config
 	(setq vterm-toggle-fullscreen-p nil)
 	(add-to-list 'display-buffer-alist
-		'((lambda (buffer-or-name _)
-			(let ((buffer (get-buffer buffer-or-name)))
-			(with-current-buffer buffer
-				(or (equal major-mode 'vterm-mode)
-					(string-prefix-p vterm-buffer-name (buffer-name buffer))))))
-		(display-buffer-reuse-window display-buffer-at-bottom)
-		(display-buffer-reuse-window display-buffer-in-direction)
-		(direction . bottom)
-		(dedicated . t) 
-		(reusable-frames . visible)
-		(window-height . 0.3))))
+							 '((lambda (buffer-or-name _)
+									 (let ((buffer (get-buffer buffer-or-name)))
+										 (with-current-buffer buffer
+											 (or (equal major-mode 'vterm-mode)
+													 (string-prefix-p vterm-buffer-name
+																						(buffer-name buffer))))))
+								 (display-buffer-reuse-window display-buffer-at-bottom)
+								 (display-buffer-reuse-window display-buffer-in-direction)
+								 (direction . bottom)
+								 (dedicated . t) 
+								 (reusable-frames . visible)
+								 (window-height . 0.3))))
 
 
 (setq evil-want-keybinding nil)
 (use-package evil-leader
-  :straight (:host github :repo "cofi/evil-leader")
+	:straight (:host github :repo "cofi/evil-leader")
 	:config
 	(global-evil-leader-mode)
 	(evil-leader/set-leader "<SPC>")
@@ -78,10 +80,14 @@
 
 (setq evil-want-keybinding nil)
 (straight-use-package
- '(evil-terminal-cursor-changer :type git :host github :repo "7696122/evil-terminal-cursor-changer"))
+ '(evil-terminal-cursor-changer
+	 :type git
+	 :host github
+	 :repo "7696122/evil-terminal-cursor-changer"))
+
 (unless (display-graphic-p)
-  (require 'evil-terminal-cursor-changer)
-  (evil-terminal-cursor-changer-activate))
+	(require 'evil-terminal-cursor-changer)
+	(evil-terminal-cursor-changer-activate))
 
 ;;; Vim Bindings
 (use-package evil
@@ -114,23 +120,31 @@
   (setq projectile-switch-project-action 'neotree-projectile-action)
   (add-hook 'neotree-mode-hook
     (lambda ()
-      (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
-      (define-key evil-normal-state-local-map (kbd "I") 'neotree-hidden-file-toggle)
-      (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)
-      (define-key evil-normal-state-local-map (kbd "R") 'neotree-refresh)
-      (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
-      (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
-      (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
-      (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
-      (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
-      (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter))))
+			;; find a better way to do this. map? each?
+      (define-key evil-normal-state-local-map
+									(kbd "q") 'neotree-hide)
+      (define-key evil-normal-state-local-map
+									(kbd "I") 'neotree-hidden-file-toggle)
+      (define-key evil-normal-state-local-map
+									(kbd "z") 'neotree-stretch-toggle)
+      (define-key evil-normal-state-local-map
+									(kbd "R") 'neotree-refresh)
+      (define-key evil-normal-state-local-map
+									(kbd "m") 'neotree-rename-node)
+      (define-key evil-normal-state-local-map
+									(kbd "c") 'neotree-create-node)
+      (define-key evil-normal-state-local-map
+									(kbd "d") 'neotree-delete-node)
+      (define-key evil-normal-state-local-map
+									(kbd "s") 'neotree-enter-vertical-split)
+      (define-key evil-normal-state-local-map
+									(kbd "S") 'neotree-enter-horizontal-split)
+      (define-key evil-normal-state-local-map
+									(kbd "RET") 'neotree-enter))))
 
-(use-package vertico
-  :config
-  (vertico-mode))
-
+(use-package vertico :config (vertico-mode))
 (straight-use-package 'vterm)
-
+(straight-use-package 'reformatter)
 (straight-use-package '(magit :type git :host github :repo "magit/magit"))
 
 (use-package treesit-auto
@@ -141,147 +155,145 @@
   (global-treesit-auto-mode))
 
 (setq treesit-language-source-alist
-   '((hare https://git.d2evs.net/~ecs/tree-sitter-hare)))
+			'((hare https://git.d2evs.net/~ecs/tree-sitter-hare)))
 (setq custom-hare-tsauto-config
-      (make-treesit-auto-recipe
-       :lang 'hare
-       :ts-mode 'hare-ts-mode
-       :remap '(hare-mode)
-	   :requires 'hare
-       :url "https://git.sr.ht/~amk/hare-ts-mode"
-       :ext "\\.ha\\'"))
+			(make-treesit-auto-recipe
+			 :lang 'hare
+			 :ts-mode 'hare-ts-mode
+			 :remap '(hare-mode)
+			 :requires 'hare
+			 :url "https://git.sr.ht/~amk/hare-ts-mode"
+			 :ext "\\.ha\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-hare-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
-  '(c3 https://github.com/c3lang/tree-sitter-c3))
+						 '(c3 https://github.com/c3lang/tree-sitter-c3))
 (setq custom-c3-tsauto-config
       (make-treesit-auto-recipe
        :lang 'c3
        :ts-mode 'c3-ts-mode
-	   :requires 'c3
+			 :requires 'c3
        :url "https://github.com/c3lang/tree-sitter-c3"
        :ext "\\.c3\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-c3-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
-	'(go "https://github.com/tree-sitter/tree-sitter-go"))
+						 '(go "https://github.com/tree-sitter/tree-sitter-go"))
 (add-to-list 'treesit-language-source-alist
-	'(gomod "https://github.com/camdencheek/tree-sitter-go-mod"))
+						 '(gomod "https://github.com/camdencheek/tree-sitter-go-mod"))
 
 (add-to-list 'treesit-language-source-alist
-	'(c "https://github.com/tree-sitter/tree-sitter-c"))
+						 '(c "https://github.com/tree-sitter/tree-sitter-c"))
 (setq custom-c-tsauto-config
       (make-treesit-auto-recipe
        :lang 'c
        :ts-mode 'c-ts-mode
        :remap '(c-mode)
-	   :requires 'c
+			 :requires 'c
        :ext "\\.c\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-c-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
-	'(cpp "https://github.com/tree-sitter/tree-sitter-cpp"))
+						 '(cpp "https://github.com/tree-sitter/tree-sitter-cpp"))
 (setq custom-cpp-tsauto-config
       (make-treesit-auto-recipe
        :lang 'cpp
        :ts-mode 'cpp-ts-mode
        :remap '(cpp-mode)
-	   :requires 'cpp
+			 :requires 'cpp
        :ext "\\.cpp\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-cpp-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
-	'(elvish "https://github.com/elves/tree-sitter-elvish"))
+						 '(elvish "https://github.com/elves/tree-sitter-elvish"))
 (setq custom-elvish-tsauto-config
       (make-treesit-auto-recipe
        :lang 'elvish
        :ts-mode 'elvish-ts-mode
        :remap '(elvish-mode)
-	   :requires 'elvish
+			 :requires 'elvish
        :ext "\\.elv\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-elvish-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
-  '(elm "https://github.com/elm-tooling/tree-sitter-elm"))
+						 '(elm "https://github.com/elm-tooling/tree-sitter-elm"))
 (setq custom-elm-tsauto-config
       (make-treesit-auto-recipe
        :lang 'elm
        :ts-mode 'elm-ts-mode
        :remap '(elm-mode)
-	   :requires 'elm
+			 :requires 'elm
        :ext "\\.elm\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-elm-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
-  '(rust "https://github.com/tree-sitter/tree-sitter-rust"))
+						 '(rust "https://github.com/tree-sitter/tree-sitter-rust"))
 (setq custom-rust-tsauto-config
       (make-treesit-auto-recipe
        :lang 'rust
        :ts-mode 'rust-ts-mode
        :remap '(rust-mode)
-	   :requires 'rust
+			 :requires 'rust
        :ext "\\.rs\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-rust-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
-  '(lua "https://github.com/tree-sitter-grammars/tree-sitter-lua"))
+						 '(lua "https://github.com/tree-sitter-grammars/tree-sitter-lua"))
 (setq custom-lua-tsauto-config
       (make-treesit-auto-recipe
        :lang 'lua
        :ts-mode 'lua-ts-mode
        :remap '(lua-mode)
-	   :requires 'lua
+			 :requires 'lua
        :ext "\\.lua\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-lua-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
-  '(ruby "https://github.com/tree-sitter/tree-sitter-ruby"))
+						 '(ruby "https://github.com/tree-sitter/tree-sitter-ruby"))
 (setq custom-ruby-tsauto-config
       (make-treesit-auto-recipe
        :lang 'ruby
        :ts-mode 'ruby-ts-mode
        :remap '(enh-ruby-mode)
-	   :requires 'ruby
+			 :requires 'ruby
        :ext "\\.ruby\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-ruby-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
-  '(fennel "https://github.com/alexmozaidze/tree-sitter-fennel"))
+						 '(fennel "https://github.com/alexmozaidze/tree-sitter-fennel"))
 (setq custom-fennel-tsauto-config
       (make-treesit-auto-recipe
        :lang 'fennel
        :ts-mode 'fennel-ts-mode
        :remap '(fennel-mode)
-	   :requires 'fennel
-       :ext "\\.fnl\\'"))
+			 :requires 'fennel
+       :ext "\\.fnl\\|.fennelrc$"))
 (add-to-list 'treesit-auto-recipe-list custom-fennel-tsauto-config)
 
-(straight-use-package 'reformatter)
-
-(straight-use-package
- '(odin-mode :type git :host github :repo "mattt-b/odin-mode"
+(use-package odin-mode
+  :straight (:type git :host github :repo "mattt-b/odin-mode")
   :mode ("\\.odin\\'" . odin-mode)
-  :hook (odin-mode . eglot)))
+  :hook (odin-mode . eglot))
 
-(straight-use-package
- '(nushell-mode :type git :host github :repo "mrkkrp/nushell-mode"
-   :mode ("\\.nu\\'" . nushell-mode)
-   :hook (nushell-mode . eglot)))
+(use-package :nushell-mode
+	:straight (:type git :host github :repo "mrkkrp/nushell-mode")
+	:mode ("\\.nu\\'" . nushell-mode)
+	:hook (nushell-mode . eglot))
 
-(straight-use-package
- '(v-mode :type git :host github :repo "damon-kwok/v-mode"
-    :files ("tokens" "v-mode.el")
-    :bind-keymap
-    ("M-z" . v-menu)
-    ("<f6>" . v-menu)
-    ("C-c C-f" . v-format-buffer)
-    :mode ("\\(\\.v?v\\|\\.vsh\\)$" . v-mode)
-    :hook (v-mode . eglot)))
+(use-package v-mode
+	:straight
+	(:type git :host github :repo "damon-kwok/v-mode" :files ("tokens" "v-mode.el"))
+	:bind-keymap
+	("M-z" . v-menu)
+	("<f6>" . v-menu)
+	("C-c C-f" . v-format-buffer)
+	:mode ("\\(\\.v?v\\|\\.vsh\\)$" . v-mode)
+	:hook (v-mode . eglot))
 
-(straight-use-package
- '(zig-mode :type git :host github :repo "ziglang/zig-mode"
-   :mode ("\\.zig\\'" . zig-mode)
-   :hook (zig-mode . eglot)))
+(use-package zig-mode
+  :straight (:type git :host github :repo "ziglang/zig-mode")
+  :mode ("\\.\\(zig\\|zon\\)\\'" . zig-mode)
+  :hook (zig-mode . eglot))
 
 (if (>= emacs-major-version 28)
     (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
@@ -291,78 +303,73 @@
         (ansi-color-apply-on-region compilation-filter-start (point))))
     (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)))
 
-(straight-use-package
- '(hare-mode :type git :repo "https://git.sr.ht/~laumann/hare-mode"
-   :mode ("\\.ha\\'" . hare-mode)
-   :hook (hare-mode . eglot)))
+(use-package hare-mode
+  :straight (:type git :repo "https://git.sr.ht/~laumann/hare-mode")
+  :mode ("\\.ha\\'" . hare-mode)
+  :hook (hare-mode . eglot))
 
-(straight-use-package
- '(terra-mode :type git :host github :repo "terralang/terra-mode"
-   :mode ("\\.t\\'" . terra-mode)
-   :hook (terra-mode . eglot)))
+(use-package terra-mode
+	:straight (:type git :host github :repo "terralang/terra-mode")
+  :mode ("\\.t\\'" . terra-mode)
+  :hook (terra-mode . eglot))
 
-(straight-use-package
- '(elvish-mode :type git :host github :repo "ALSchwalm/elvish-mode"
-   :mode ("\\.elv\\'" . elvish-mode)
-   :hook (elvish-mode . eglot)))
+(use-package elm-mode
+	:straight (:type git :host github :repo "jcollard/elm-mode")
+  :mode ("\\.elm\\'" . elm-mode)
+  :hook ((elm-mode . eglot) (elm-mode . elm-format-on-save-mode))
+  :init (setq elm-sort-imports-on-save t))
 
-(straight-use-package
- '(elm-mode :type git :host github :repo "jcollard/elm-mode"
-   :mode ("\\.elm\\'" . elm-mode)
-   :hook ((elm-mode . eglot) (elm-mode . elm-format-on-save-mode))
-   :init (setq elm-sort-imports-on-save t)))
+(use-package lua-mode
+	:straight (:type git :host github :repo "immerrr/lua-mode")
+	:mode ("\\.lua\\'" . lua-mode)
+	:hook (lua-mode . eglot))
 
-(straight-use-package
-'(lua-mode :type git :host github :repo "immerrr/lua-mode"
-			:mode ("\\.lua\\'" . lua-mode)
-			:hook (lua-mode . eglot)))
-
-(straight-use-package
- '(rust-mode :type git :host github :repo "rust-lang/rust-mode"
-   :mode ("\\.rs\\'" . rust-mode)))
+(use-package rust-mode
+	:straight (:type git :host github :repo "rust-lang/rust-mode")
+  :mode ("\\.rs\\'" . rust-mode))
 
 (setq rustic-lsp-client 'eglot)
-(straight-use-package
-  '(rustic :type git :host github :repo "emacs-rustic/rustic"))
+(use-package rustic
+  :straight (:type git :host github :repo "emacs-rustic/rustic"))
 (with-eval-after-load 'rust-mode
   (require 'rustic nil t))
 
-(straight-use-package
- '(enh-ruby-mode :type git :host github :repo "zenspider/enhanced-ruby-mode"
-   :mode
-   ("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode))) 
+(use-package enh-ruby-mode
+	:straight (:type git :host github :repo "zenspider/enhanced-ruby-mode")
+  :mode
+  ("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'" . enh-ruby-mode)) 
 
-(straight-use-package
- '(fennel-mode :type git :host github :repo "emacsmirror/fennel-mode"
-			   :mode ("\\.fnl\\'" . fennel-mode)
-			   :hook (fennel-mode . eglot)))
+(use-package fennel-mode
+	:straight (:type git :host github :repo "emacsmirror/fennel-mode")
+	:mode ("\\.fnl\\|.fennelrc$" . fennel-mode)
+	:hook (fennel-mode . eglot))
 
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs
-			   '(odin-mode . ("ols")))
+							 '(odin-mode . ("ols")))
   (add-to-list 'eglot-server-programs
-			   '(lua-mode . ("lua-language-server")))
+							 '(lua-mode . ("lua-language-server")))
   (add-to-list 'eglot-server-programs
-			   '(nushell-mode . ("nuls")))
+							 '(nushell-mode . ("nuls")))
   (add-to-list 'eglot-server-programs
-			   '(v-mode . ("v-analyzer")))
+							 '(v-mode . ("v-analyzer")))
   (add-to-list 'eglot-server-programs
-			   '(zig-mode . ("zls")))
+							 '(zig-mode . ("zls")))
   (add-to-list 'eglot-server-programs
-			   '(c3-mode . ("c3lsp")))
+							 '(c3-mode . ("c3lsp")))
   (add-to-list 'eglot-server-programs
-			   '(go-mode . ("gopls")))
+							 '(go-mode . ("gopls")))
   (add-to-list 'eglot-server-programs
-			   '(elvish-mode . ("elvish" "-lsp")))
+							 '(elvish-mode . ("elvish" "-lsp")))
   (add-to-list 'eglot-server-programs
-			   '(elm-mode . ("elm-language-server")))
+							 '(elm-mode . ("elm-language-server")))
   (add-to-list 'eglot-server-programs
-			   '(rust-mode . ("rust-analyzer")))
+							 '(rust-mode . ("rust-analyzer")))
   (add-to-list 'eglot-server-programs
-			   '(enh-ruby-mode . ("ruby-lsp")))
+							 '(enh-ruby-mode . ("ruby-lsp")))
   (add-to-list 'eglot-server-programs
-			   '(fennel-mode . ("fennel-ls")))
+							 '(fennel-mode . ("fennel-ls")))
   :hook
   ((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot)
    (v-mode . eglot) (c3-mode . eglot) (elvish-mode . eglot)
@@ -404,6 +411,8 @@
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (menu-bar-mode 0)
 (setq-default tab-width 2)
+(add-hook 'prog-mode-hook (display-fill-column-indicator-mode)
+					(setopt display-fill-column-indicator-column 80))        
 
 ;;(use-package jbeans-theme
 ;;  :config
@@ -418,8 +427,8 @@
 ;;  :config
 ;;  (load-theme 'seti))
 (use-package timu-spacegrey-theme
-  :config
-  (load-theme 'timu-spacegrey))
+	:config
+	(load-theme 'timu-spacegrey))
 ;;(use-package jazz-theme
 ;;  :config
 ;;  (load-theme 'jazz))
@@ -449,10 +458,10 @@
 ;;  (load-theme 'liso))
 
 (defun set-background-for-terminal (&optional frame)
-  (or frame (setq frame (selected-frame)))
-  "unsets the background color in terminal mode"
-  (unless (display-graphic-p frame)
-    (set-face-background 'default "unspecified-bg" frame)))
+	(or frame (setq frame (selected-frame)))
+	"unsets the background color in terminal mode"
+	(unless (display-graphic-p frame)
+		(set-face-background 'default "unspecified-bg" frame)))
 (add-hook 'after-make-frame-functions 'set-background-for-terminal)
 (add-hook 'window-setup-hook 'set-background-for-terminal)
 
