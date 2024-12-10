@@ -847,6 +847,7 @@ alias wezconf = wconf
 alias hconf = ^emacs-nw /Users/aya/.config/helix/config.toml
 alias nuconf = ^emacs-nw /Users/aya/.config/nushell/config.nu
 alias nuenv = ^emacs-nw /Users/aya/.config/nushell/env.nu
+alias renu = ^renu
 
 
 alias nu-open = open

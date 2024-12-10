@@ -1,0 +1,7 @@
+#!/usr/bin/env nu
+
+source /Users/aya/.config/nushell/env.nu
+source /Users/aya/.config/nushell/config.nu
+
+# symlink to path for nushell refresh after config/env changes.
+# the order is important.
