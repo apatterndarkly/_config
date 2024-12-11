@@ -16,6 +16,7 @@ PATH="/Users/aya/.qlot/bin:$PATH"
 PATH="/Users/aya/.modular/bin:$PATH"
 PATH="/Users/aya/.deno/bin:$PATH"
 PATH="/Users/aya/.nimble/bin:$PATH"
+PATH="/Users/aya/.fzf/bin:$PATH"
 PATH="/Users/aya/go/bin:$PATH"
 PATH="/Users/aya/.cargo/bin:$PATH"
 PATH="/Users/aya/local/bin:$PATH"
@@ -25,4 +26,3 @@ test -r '/opt/homebrew/bin/brew' && eval "$(/opt/homebrew/bin/brew shellenv)"
 test -r '/Users/aya/.opam/opam-init/init.sh' && . '/Users/aya/.opam/opam-init/init.sh' > /dev/null 2> /dev/null || true
 test -r '/Users/aya/.cargo/env' && . '/Users/aya/.cargo/env'
 test -r '/Users/aya/.deno/env' && . '/Users/aya/.deno/env'
-test -r '/opt/homebrew/opt/asdf/libexec/asdf.sh' && . '/opt/homebrew/opt/asdf/libexec/asdf.sh'
