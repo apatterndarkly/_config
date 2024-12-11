@@ -879,3 +879,4 @@ def --env cdl [d?: string] {
 
 use ~/.cache/starship/init.nu
 use ~/local/bin/bash-env.nu
+use ($nu.default-config-dir | path join mise.nu)

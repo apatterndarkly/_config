@@ -101,8 +101,8 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend '/usr/local/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/local/sbin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/local/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/Cellar/ruby/3.3.5/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/opt/make/libexec/gnubin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/bin')
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/opt/gawk/libexec/gnubin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/Library/Application Support/Coursier/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.nimble/bin')
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/go/bin')
@@ -113,12 +113,12 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.cargo/bin'
 $env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/local/bin')
 
 $env.EDITOR = "emacs-nw"
-$env.ASDF_DIR = (brew --prefix asdf | str trim | into string | path join 'libexec')
-source /opt/homebrew/opt/asdf/libexec/asdf.nu
 
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 
+let mise_path = $nu.default-config-dir | path join mise.nu
+^mise activate nu | save $mise_path --force
 
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
