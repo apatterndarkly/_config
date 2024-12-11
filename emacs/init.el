@@ -259,6 +259,18 @@
        :ext "\\.fnl\\|.fennelrc$"))
 (add-to-list 'treesit-auto-recipe-list custom-fennel-tsauto-config)
 
+
+(add-to-list 'treesit-language-source-alist
+						 '(scheme "https://github.com/codepod-io/tree-sitter-scheme"))
+(setq custom-scheme-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'scheme
+       :ts-mode 'scheme-ts-mode
+       :remap '(scheme-mode)
+			 :requires 'scheme
+       :ext "\\.scm$"))
+(add-to-list 'treesit-auto-recipe-list custom-fennel-tsauto-config)
+
 (use-package odin-mode
   :straight (:type git :host github :repo "mattt-b/odin-mode")
   :mode ("\\.odin\\'" . odin-mode)
@@ -336,6 +348,73 @@
 (use-package kdl-mode
 	:straight (:type git :host github :repo "apatterndarkly/kdl-mode")
 	:mode ("\\.kdl$" . kdl-mode))
+
+(use-package gambit
+	:straight
+	(:host github
+				 :repo "gambit/gambit"
+				 :files ("misc/gambit.el")
+				 :branch "master")
+	:mode ("\\.$" . gambit-mode))
+
+(progn
+	(defvar *gerbil-path*
+		(shell-command-to-string "gxi -e '(display (path-expand \"~~\"))'\
+			-e '(flush-output-port)'"))
+
+	(use-package gerbil-mode
+		:straight
+		(:host github
+					 :repo "mighty-gerbils/gerbil"
+					 :files ("etc/gerbil-mode.el")
+					 :branch "master")
+		:defer t
+		:mode (("\\.ss\\'"  . gerbil-mode)
+					 ("\\.pkg\\'" . gerbil-mode))
+		:bind (:map comint-mode-map
+								(("C-S-n" . comint-next-input)
+								 ("C-S-p" . comint-previous-input)
+								 ("C-S-l" . clear-comint-buffer))
+								:map gerbil-mode-map
+								(("C-S-l" . clear-comint-buffer)))
+    ;; :init
+    ;; (autoload 'gerbil-mode
+    ;;   (expand-file-name "share/emacs/site-lisp/gerbil-mode.el" *gerbil-path*)
+    ;; "Gerbil editing mode." t)
+    :hook
+    ((gerbil-mode-hook . linum-mode)
+		 (gerbil-mode . eglot)
+     (inferior-scheme-mode-hook . gambit-inferior-mode))
+    :config
+    (require 'gambit)
+    ;; (setf scheme-program-name (expand-file-name "bin/gxi" *gerbil-path*))
+    ;; (let ((tags (locate-dominating-file default-directory "TAGS")))
+    ;;   (when tags (visit-tags-table tags)))
+    ;; (let ((tags (expand-file-name "src/TAGS" *gerbil-path*)))
+    ;;   (when (file-exists-p tags) (visit-tags-table tags)))
+
+    (when (package-installed-p 'smartparens)
+      (sp-pair "'" nil :actions :rem)
+      (sp-pair "`" nil :actions :rem))
+
+    (defun clear-comint-buffer ()
+      (interactive)
+      (with-current-buffer "*scheme*"
+				(let ((comint-buffer-maximum-size 0))
+          (comint-truncate-buffer)))))
+
+  (defun gerbil-setup-buffers ()
+    "Change current buffer mode to gerbil-mode and start a REPL"
+    (interactive)
+    (gerbil-mode)
+    (split-window-right)
+    (shrink-window-horizontally 2)
+    (let ((buf (buffer-name)))
+      (other-window 1)
+      (run-scheme "gxi")
+      (switch-to-buffer-other-window "*scheme*" nil)
+      (switch-to-buffer buf)))
+  (global-set-key (kbd "C-c C-g") 'gerbil-setup-buffers))
 
 (use-package eglot
   :config
