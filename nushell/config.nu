@@ -845,9 +845,10 @@ alias zup = ^zellij
 alias wconf = ^emacs-nw /Users/aya/.config/wezterm/wezterm.lua
 alias wezconf = wconf
 alias hconf = ^emacs-nw /Users/aya/.config/helix/config.toml
-alias nuconf = ^emacs-nw /Users/aya/.config/nushell/config.nu
-alias nuenv = ^emacs-nw /Users/aya/.config/nushell/env.nu
-alias renu = ^renu
+alias nuconf = config nu
+alias nuenv = config env
+alias renu = exec nu
+alias xer = ^exercism
 
 
 alias nu-open = open
