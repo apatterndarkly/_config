@@ -28,5 +28,5 @@ alias kconf='em /Users/aya/.config/kitty/kitty.conf'
 
 # bash specific
 test -r '/Users/aya/.fzf.bash' && . '/Users/aya/.fzf.bash'
-test -r "$BASH_IT/bash_it.sh" && . "$BASH_IT"/bash_it.sh"
+test -r "$BASH_IT/bash_it.sh" && . "$BASH_IT/bash_it.sh"
 eval "$(~/.cargo/bin/mise activate bash)"
