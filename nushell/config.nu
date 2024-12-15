@@ -850,9 +850,9 @@ alias nuenv = config env
 alias renu = exec nu
 alias xer = ^exercism
 
-
 alias nu-open = open
 alias open = ^open
+alias bookfiles = open $"($env.HOME)/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
 
 def murder [process_name: string = "Emacs"] {
 	let p_id = ps | where name =~ ($process_name) | get pid.0
