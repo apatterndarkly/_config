@@ -878,6 +878,11 @@ def --env cdl [d?: string] {
 	cd $"($env.HOME)/local/($d)"
 }
 
+def --env lsdot [d: glob = ""] {
+		let path = if (($d) | into string | str length) > 0  { ($d) } else { ($env.HOME) }
+		ls -a ($path) | get name | where ($it | path split| last | str starts-with '.') | sort
+}
+
 use ~/.cache/starship/init.nu
 use ~/local/bin/bash-env.nu
 use ($nu.default-config-dir | path join mise.nu)
