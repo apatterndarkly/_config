@@ -4,13 +4,13 @@ local config = wezterm.config_builder()
 config.scrollback_lines = 10000
 config.enable_scroll_bar = true
 config.color_scheme = 'Sweet Love (terminal.sexy)'
-config.window_background_opacity = 0.90
+config.window_background_opacity = 0.80
 config.font_size = 16.0
 config.line_height = 1.4
 
 config.font = wezterm.font_with_fallback {
-  'ZedMono Nerd Font',
   'D2CodingLigature Nerd Font',
+  'ZedMono Nerd Font',
 }
 
 config.default_prog = { '/home/apd/.cargo/bin/nu' }
