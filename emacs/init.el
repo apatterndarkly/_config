@@ -96,7 +96,6 @@
 	(require 'evil-terminal-cursor-changer)
 	(evil-terminal-cursor-changer-activate))
 
-;;; Vim Bindings
 (use-package evil
   :demand t
   :bind (("<escape>" . keyboard-escape-quit))
@@ -153,6 +152,9 @@
 (straight-use-package 'vterm)
 (straight-use-package 'reformatter)
 (straight-use-package '(magit :type git :host github :repo "magit/magit"))
+
+(use-package app-launcher
+  :straight '(app-launcher :host github :repo "SebastienWae/app-launcher"))
 
 (use-package treesit-auto
   :custom
