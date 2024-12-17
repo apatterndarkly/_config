@@ -5,9 +5,14 @@ config.scrollback_lines = 10000
 config.enable_scroll_bar = true
 config.color_scheme = 'Sweet Love (terminal.sexy)'
 config.window_background_opacity = 0.90
-config.font_size = 18.0
+config.font_size = 16.0
 config.line_height = 1.4
-config.font = wezterm.font 'D2CodingLigature Nerd Font'
+
+config.font = wezterm.font_with_fallback {
+  'ZedMono Nerd Font',
+  'D2CodingLigature Nerd Font',
+}
+
 config.default_prog = { '/home/apd/.cargo/bin/nu' }
 
 wezterm.on('gui-startup', function(cmd)
