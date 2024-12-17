@@ -6,7 +6,7 @@ layout {
         }
 		pane name="nushell" command="nu" focus=true size=114
     }
-    pane size=1 borderless=true {
+    pane size="3%" borderless=true {
         plugin location="zellij:status-bar"
     }
 }
