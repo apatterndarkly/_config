@@ -848,7 +848,8 @@ alias hconf = ^emacs-nw /home/apd/.config/helix/config.toml
 alias brc = ^emacs-nw /home/apd/.bashrc
 alias brofile = ^emacs-nw /home/apd/.bash_profile
 alias profile = ^emacs-nw /home/apd/.profile
-alias rebash = ^source /home/apd/.profile
+alias rebash = ^bash -c "source /home/apd/.profile"
+alias sconf = ^emacs-nw /home/apd/.config/sway/config
 alias nuconf = config nu
 alias nuenv = config env
 alias renu = exec nu
@@ -889,4 +890,5 @@ def --env lsdot [d: glob = ""] {
 
 use ~/.cache/starship/init.nu
 #use ~/local/bin/bash-env.nu
+
 use ($nu.default-config-dir | path join mise.nu)

@@ -2,7 +2,12 @@ if [ -f ~/.profile ]; then
 		. ~/.profile
 fi
 
+if [ "${tty}" = /dev/tty1 ]; then
+	 exec dbus-run-session sway
+fi
+
 # If not running interactively, we're done
+
 case $- in
   *i*) ;;
     *) return;;
