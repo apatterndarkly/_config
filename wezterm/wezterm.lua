@@ -8,7 +8,7 @@ config.window_background_opacity = 0.90
 config.font_size = 18.0
 config.line_height = 1.4
 config.font = wezterm.font 'D2CodingLigature Nerd Font'
-config.default_prog = { '/Users/aya/.cargo/bin/nu' }
+config.default_prog = { '/home/apd/.cargo/bin/nu' }
 
 wezterm.on('gui-startup', function(cmd)
   local tab, pane, window = wezterm.mux.spawn_window(cmd or {})

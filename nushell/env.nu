@@ -96,21 +96,20 @@ $env.NU_PLUGIN_DIRS = [
 # path add ($env.HOME | path join ".local" "bin")
 # $env.PATH = ($env.PATH | uniq)
 # macOS ARM64 (Apple Silicon)
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/usr/local/sbin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/usr/local/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/local/sbin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/local/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/Cellar/ruby/3.3.5/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/homebrew/opt/gawk/libexec/gnubin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/Library/Application Support/Coursier/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.nimble/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/go/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.deno/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.qlot/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.modular/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/.cargo/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/Users/aya/local/bin')
+#
+
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/.cargo/bin')
+$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/local/bin')
+
+#$env.PATH = ($env.PATH | split row (char esep) | prepend '/usr/local/sbin')
+#$env.PATH = ($env.PATH | split row (char esep) | prepend '/usr/local/bin')
+#$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/local/sbin')
+#$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/local/bin')
+#$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/.nimble/bin')
+#$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/go/bin')
+#$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/.deno/bin')
+#$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/.qlot/bin')
+#$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/.modular/bin')
 
 $env.EDITOR = "emacs-nw"
 

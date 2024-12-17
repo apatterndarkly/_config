@@ -5,6 +5,12 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
 	 '("31dc824dd1bd213bbfc55dcbfd9b43dbd076a6c26c127f72015d1b32fb788330" "fc1275617f9c8d1c8351df9667d750a8e3da2658077cfdda2ca281a2ebc914e0" default))
+ '(ignored-local-variable-values
+	 '((vc-default-patch-addressee . "bug-gnu-emacs@gnu.org")
+		 (etags-regen-ignores "test/manual/etags/")
+		 (etags-regen-regexp-alist
+			(("c" "objc")
+			 "/[ \11]*DEFVAR_[A-Z_ \11(]+\"\\([^\"]+\\)\"/\\1/" "/[ \11]*DEFVAR_[A-Z_ \11(]+\"[^\"]+\",[ \11]\\([A-Za-z0-9_]+\\)/\\1/"))))
  '(package-selected-packages
 	 '(corfu treesit-auto odin-mode cider flycheck-clang-tidy flycheck flymake-lua nushell-ts-mode nushell-mode dap-mode lsp-ui lsp-mode powerline-evil smart-mode-line-atom-one-dark-theme vertico undo-fu smart-mode-line-powerline-theme jbeans-theme evil-terminal-cursor-changer evil-collection))
  '(vc-follow-symlinks t))
@@ -15,6 +21,7 @@
  ;; If there is more than one, they won't work right.
  )
 
+(setq warning-minimum-level :error)
 (setq package-archives
 			'(("melpa" . "https://melpa.org/packages/")
 				("elpa" . "https://elpa.gnu.org/packages/")))

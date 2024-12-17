@@ -1,5 +1,7 @@
-export BASH_IT='/Users/aya/.bash_it'
+export XDG_CONFIG_HOME="$HOME/.config"
+export BASH_IT="$HOME/.bash_it"
 export BASH_IT_THEME='bobby'
+# export BASH_IT_THEME='powerline-multiline'
 export THEME_CHECK_SUDO='true'
 unset MAILCHECK
 export SCM_CHECK=true
@@ -8,25 +10,28 @@ export BASH_IT_AUTOMATIC_RELOAD_AFTER_CONFIG_CHANGE=1
 # export IRC_CLIENT='irssi'
 # Set this to the location of your work or project folders
 # BASH_IT_PROJECT_PATHS="${HOME}/Projects:/Volumes/work/src"
-export BASH_IT_THEME='powerline-multiline'
-export XDG_CONFIG_HOME='/Users/aya/.config'
 
 
-alias em='/Users/aya/local/bin/emacs-nw'
-alias vimrc='em /Users/aya/.config/nvim/init.vim'
-alias bashrc='em -- /Users/aya/.bashrc'
-alias bprof='em -- /Users/aya/.bash_profile'
-alias sb='. /Users/aya/.bashrc'
-alias bn='bash --norc'
-alias zconf='em /Users/aya/.config/zellij/config.kdl'
-alias zlay='em /Users/aya/.config/zellij/layouts/default.kdl'
-alias wconf='em /Users/aya/.config/wezterm/wezterm.lua'
-alias econf='em /Users/aya/.config/emacs/init.el'
-alias nuconf='em /Users/aya/.config/nushell/config.nu'
-alias nuenv='em /Users/aya/.config/nushell/env.nu'
-alias kconf='em /Users/aya/.config/kitty/kitty.conf'
+alias em="$HOME/local/bin/emacs-nw"
+alias vimrc="em $HOME/.config/nvim/init.vim"
+alias brc="em $HOME/.bashrc"
+alias brofile="em $HOME/.bash_profile"
+alias profile="em $HOME/.profile"
+alias rebash=". $HOME/.bash_profile"
+alias barebash="bash --norc"
+alias zconf="em $HOME/.config/zellij/config.kdl"
+alias zlay="em $HOME/.config/zellij/layouts/default.kdl"
+alias wconf="em $HOME/.config/wezterm/wezterm.lua"
+alias econf="em $HOME/.config/emacs/init.el"
+alias nuconf="em $HOME/.config/nushell/config.nu"
+alias nuenv="em $HOME/.config/nushell/env.nu"
+alias kconf="em $HOME/.config/kitty/kitty.conf"
+
+alias gs="git status"
+alias gco="git checkout"
+alias gsw="git switch"
 
 # bash specific
-test -r '/Users/aya/.fzf.bash' && . '/Users/aya/.fzf.bash'
+test -r "$HOME/.fzf.bash" && . "$HOME/.fzf.bash"
 test -r "$BASH_IT/bash_it.sh" && . "$BASH_IT/bash_it.sh"
-eval "$(~/.cargo/bin/mise activate bash)"
+test -r "$HOME/.local/bin/mise" && eval "$($HOME/.local/bin/mise activate bash)"

@@ -1,28 +1,18 @@
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
-export XDG_CONFIG_HOME='/Users/aya/.config'
+export XDG_CONFIG_HOME="$HOME/.config"
 export TERM='xterm-256color'
-export SHELL='/Users/aya/.cargo/bin/nu'
-export EDITOR='/Users/local/bin/emacs-nw'
+export SHELL="$HOME/.cargo/bin/nu"
+export EDITOR="$HOME/local/bin/emacs-nw"
 
-PATH="/usr/local/sbin:$PATH"
-PATH="/usr/local/bin:$PATH"
-PATH="/opt/local/sbin:$PATH"
-PATH="/opt/local/bin:$PATH"
-PATH="/opt/homebrew/bin:$PATH"
-PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
-PATH="/Users/aya/Library/Application Support/Coursier/bin:$PATH"
-PATH="/Users/aya/.qlot/bin:$PATH"
-PATH="/Users/aya/.modular/bin:$PATH"
-PATH="/Users/aya/.deno/bin:$PATH"
-PATH="/Users/aya/.nimble/bin:$PATH"
-PATH="/Users/aya/.fzf/bin:$PATH"
-PATH="/Users/aya/go/bin:$PATH"
-PATH="/Users/aya/.cargo/bin:$PATH"
-PATH="/Users/aya/local/bin:$PATH"
+PATH="$HOME/.qlot/bin:$PATH"
+PATH="$HOME/.modular/bin:$PATH"
+PATH="$HOME/.deno/bin:$PATH"
+PATH="$HOME/.nimble/bin:$PATH"
+PATH="$HOME/.fzf/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
+PATH="$HOME/local/bin:$PATH"
 export PATH
 
-test -r '/opt/homebrew/bin/brew' && eval "$(/opt/homebrew/bin/brew shellenv)"
-test -r '/Users/aya/.opam/opam-init/init.sh' && . '/Users/aya/.opam/opam-init/init.sh' > /dev/null 2> /dev/null || true
-test -r '/Users/aya/.cargo/env' && . '/Users/aya/.cargo/env'
-test -r '/Users/aya/.deno/env' && . '/Users/aya/.deno/env'
+test -r "$HOME/.opam/opam-init/init.sh" && . "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true
+test -r "$HOME/.cargo/env" && . "$HOME/.cargo/env"
+test -r "$HOME/.deno/env" && . "$HOME/.deno/env"

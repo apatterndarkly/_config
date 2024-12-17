@@ -833,18 +833,22 @@ $env.config = {
 
 alias em = ^emacs-nw
 alias nv = ^nvim
-alias dbq = opt/homebrew/opt/sqlite/bin
+alias dbq = ^sqlite3
 alias gs = ^git status
 alias gco = ^git checkout
 alias gsw = ^git switch
-alias econf = ^emacs-nw /Users/aya/.config/emacs/init.el
-alias kconf = ^emacs-nw /Users/aya/.config/kitty/kitty.conf
-alias zconf = ^emacs-nw /Users/aya/.config/zellij/config.kdl
-alias zlay = ^emacs-nw /Users/aya/.config/zellij/layouts/default.kdl
+alias econf = ^emacs-nw /home/apd/.config/emacs/init.el
+alias kconf = ^emacs-nw /home/apd/.config/kitty/kitty.conf
+alias zconf = ^emacs-nw /home/apd/.config/zellij/config.kdl
+alias zlay = ^emacs-nw /home/apd/.config/zellij/layouts/default.kdl
 alias zup = ^zellij
-alias wconf = ^emacs-nw /Users/aya/.config/wezterm/wezterm.lua
+alias wconf = ^emacs-nw /home/apd/.config/wezterm/wezterm.lua
 alias wezconf = wconf
-alias hconf = ^emacs-nw /Users/aya/.config/helix/config.toml
+alias hconf = ^emacs-nw /home/apd/.config/helix/config.toml
+alias brc = ^emacs-nw /home/apd/.bashrc
+alias brofile = ^emacs-nw /home/apd/.bash_profile
+alias profile = ^emacs-nw /home/apd/.profile
+alias rebash = ^source /home/apd/.profile
 alias nuconf = config nu
 alias nuenv = config env
 alias renu = exec nu
@@ -854,8 +858,8 @@ alias nu-open = open
 alias open = ^open
 alias bookfiles = open $"($env.HOME)/Library/Mobile Documents/iCloud~com~apple~iBooks/Documents"
 
-def murder [process_name: string = "Emacs"] {
-	let p_id = ps | where name =~ ($process_name) | get pid.0
+def murder [process_name: string = "emacs"] {
+	let p_id = ps | where name =~ $process_name | get pid.0
 	($p_id) | kill $in
 	$"Killed ($process_name) \(pid: ($p_id)\)."
 }
@@ -884,5 +888,5 @@ def --env lsdot [d: glob = ""] {
 }
 
 use ~/.cache/starship/init.nu
-use ~/local/bin/bash-env.nu
+#use ~/local/bin/bash-env.nu
 use ($nu.default-config-dir | path join mise.nu)
