@@ -175,8 +175,21 @@
 			 :ext "\\.ha\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-hare-tsauto-config)
 
+(straight-use-package
+ '(nushell-ts-babel :type git :host github :repo "herbertjones/nushell-ts-babel"))
+(setq treesit-language-source-alist
+			'((nu https://github.com/nushell/tree-sitter-nu)))
+(use-package nushell-ts-mode
+  :straight (nushell-ts-mode :type git :host github :repo "herbertjones/nushell-ts-mode")
+  :config
+	(require 'nushell-ts-babel)
+  (defun hfj/nushell/mode-hook ()
+    (electric-pair-local-mode 1)
+    (electric-indent-local-mode 1))
+  (add-hook 'nushell-ts-mode-hook 'hfj/nushell/mode-hook))
+
 (add-to-list 'treesit-language-source-alist
-						 '(c3 https://github.com/c3lang/tree-sitter-c3))
+						 '(c3 "https://github.com/c3lang/tree-sitter-c3"))
 (setq custom-c3-tsauto-config
       (make-treesit-auto-recipe
        :lang 'c3
@@ -267,7 +280,6 @@
 			 :requires 'fennel
        :ext "\\.fnl\\|.fennelrc$"))
 (add-to-list 'treesit-auto-recipe-list custom-fennel-tsauto-config)
-
 
 (add-to-list 'treesit-language-source-alist
 						 '(scheme "https://github.com/codepod-io/tree-sitter-scheme"))
@@ -432,7 +444,7 @@
   (add-to-list 'eglot-server-programs
 							 '(lua-mode . ("lua-language-server")))
   (add-to-list 'eglot-server-programs
-							 '(nushell-mode . ("nuls")))
+							 '(nushell-mode . ("nu" "--lsp")))
   (add-to-list 'eglot-server-programs
 							 '(v-mode . ("v-analyzer")))
   (add-to-list 'eglot-server-programs
