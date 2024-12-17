@@ -27,6 +27,7 @@ alias nuconf="em $HOME/.config/nushell/config.nu"
 alias nuenv="em $HOME/.config/nushell/env.nu"
 alias kconf="em $HOME/.config/kitty/kitty.conf"
 alias sconf="em $HOME/.config/sway/config"
+alias barconf="em $HOME/.config/waybar/config.jsonc"
 
 alias gs="git status"
 alias gco="git checkout"

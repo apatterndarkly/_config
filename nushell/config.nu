@@ -850,6 +850,7 @@ alias brofile = ^emacs-nw $"($env.HOME)/.bash_profile"
 alias profile = ^emacs-nw $"($env.HOME)/.profile"
 alias rebash = ^bash -c "source ~/.profile"
 alias sconf = ^emacs-nw $"($env.HOME)/.config/sway/config"
+alias barconf = ^emacs-nw $"($env.HOME)/.config/waybar/config.jsonc"
 alias nuconf = config nu
 alias nuenv = config env
 alias renu = exec nu
