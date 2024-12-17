@@ -98,18 +98,13 @@ $env.NU_PLUGIN_DIRS = [
 # macOS ARM64 (Apple Silicon)
 #
 
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/.cargo/bin')
-$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/local/bin')
-
-#$env.PATH = ($env.PATH | split row (char esep) | prepend '/usr/local/sbin')
-#$env.PATH = ($env.PATH | split row (char esep) | prepend '/usr/local/bin')
-#$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/local/sbin')
-#$env.PATH = ($env.PATH | split row (char esep) | prepend '/opt/local/bin')
-#$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/.nimble/bin')
-#$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/go/bin')
-#$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/.deno/bin')
-#$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/.qlot/bin')
-#$env.PATH = ($env.PATH | split row (char esep) | prepend '/home/apd/.modular/bin')
+$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.cargo/bin")
+$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/local/bin")
+#$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.nimble/bin")
+#$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/go/bin")
+#$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.deno/bin")
+#$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.qlot/bin")
+#$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.modular/bin")
 
 $env.EDITOR = "emacs-nw"
 
