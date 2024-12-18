@@ -1,10 +1,12 @@
 // -*- mode: jsonc -*-
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 10, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
+		// "layer": "top", // Waybar at top layer
+		"position": "bottom", // Waybar position (top|bottom|left|right)
+		"height": 10, // Waybar height (to be removed for auto height)
+		// "width": 1280, // Waybar width
+		"spacing": 4, // Gaps between modules (4px)
+		// "mode": "hide"
+
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
@@ -33,6 +35,7 @@
         "tray",
         "custom/power"
     ],
+
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -50,6 +53,7 @@
     //         "default": ""
     //     }
     // },
+
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -103,11 +107,11 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
-        "spacing": 10
+        "icon-size": 4,
+        "spacing": 0
     },
     "clock": {
-        // "timezone": "America/New_York",
+        "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -150,15 +154,15 @@
         "bat": "BAT2"
     },
     "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
+				"format": "{icon}",
+				"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+				"tooltip": true,
+				"format-icons": {
+						"default": "",
+						"performance": "",
+						"balanced": "",
+						"power-saver": ""
+				}
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -200,16 +204,16 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
-    "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
+		"custom/power": {
+				"format" : "⏻ ",
+				"tooltip": false,
+				"menu": "on-click",
+				"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
+				"menu-actions": {
+						"shutdown": "shutdown",
+						"reboot": "reboot",
+						"suspend": "systemctl suspend",
+						"hibernate": "systemctl hibernate"
+				}
 		}
-    }
 }
