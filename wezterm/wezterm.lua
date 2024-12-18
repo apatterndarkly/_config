@@ -3,6 +3,7 @@ local config = wezterm.config_builder()
 
 config.scrollback_lines = 10000
 config.enable_scroll_bar = true
+config.hide_tab_bar_if_only_one_tab = true
 config.color_scheme = 'Sweet Love (terminal.sexy)'
 config.window_background_opacity = 0.80
 config.font_size = 16.0
