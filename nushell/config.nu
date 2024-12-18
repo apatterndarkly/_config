@@ -886,6 +886,16 @@ def --env lsdot [d: glob = ""] {
 		ls -a ($path) | get name | where ($it | path split| last | str starts-with '.') | sort
 }
 
+def --env y [...args] {
+	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
+	yazi ...$args --cwd-file $tmp
+	let cwd = (open $tmp)
+	if $cwd != "" and $cwd != $env.PWD {
+		cd $cwd
+	}
+	rm -fp $tmp
+}
+
 use ~/.cache/starship/init.nu
 #use ~/local/bin/bash-env.nu
 
