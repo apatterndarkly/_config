@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-	 '("31dc824dd1bd213bbfc55dcbfd9b43dbd076a6c26c127f72015d1b32fb788330" "fc1275617f9c8d1c8351df9667d750a8e3da2658077cfdda2ca281a2ebc914e0" default))
+	 '("062e6ec918ed89d5d9a342dbbefd99e8690c5514c6698a78fc25f259972e9242" "31dc824dd1bd213bbfc55dcbfd9b43dbd076a6c26c127f72015d1b32fb788330" "fc1275617f9c8d1c8351df9667d750a8e3da2658077cfdda2ca281a2ebc914e0" default))
  '(package-selected-packages
 	 '(corfu treesit-auto odin-mode cider flycheck-clang-tidy flycheck flymake-lua nushell-ts-mode nushell-mode dap-mode lsp-ui lsp-mode powerline-evil smart-mode-line-atom-one-dark-theme vertico undo-fu smart-mode-line-powerline-theme jbeans-theme evil-terminal-cursor-changer evil-collection))
  '(vc-follow-symlinks t))
@@ -101,7 +101,9 @@
   (setq evil-normal-state-cursor 'box)
   (setq evil-insert-state-cursor 'bar)
   (setq evil-emacs-state-cursor  'hbar)
+	(evil-set-undo-system 'undo-redo)
   :config
+	(evil-global-set-key 'normal (kbd "U") 'evil-redo)
   (evil-mode 1))
 
 (use-package evil-collection
@@ -190,7 +192,7 @@
        :ts-mode 'c-ts-mode
        :remap '(c-mode)
 			 :requires 'c
-       :ext "\\.c\\'"))
+       :ext "\\.c\\|\\.h\\$"))
 (add-to-list 'treesit-auto-recipe-list custom-c-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
@@ -270,6 +272,11 @@
 			 :requires 'scheme
        :ext "\\.scm$"))
 (add-to-list 'treesit-auto-recipe-list custom-fennel-tsauto-config)
+
+;; (use-package c-mode
+;; ;;	:straight (:type git :host github :repo "")
+;;   :mode ("\\.c\\|\\.h\\$" . c-mode)
+;;   :hook (c-mode . eglot))
 
 (use-package odin-mode
   :straight (:type git :host github :repo "mattt-b/odin-mode")
@@ -440,10 +447,12 @@
 							 '(enh-ruby-mode . ("ruby-lsp")))
   (add-to-list 'eglot-server-programs
 							 '(fennel-mode . ("fennel-ls")))
+  (add-to-list 'eglot-server-programs
+							 '(c-mode . ("clangd")))
 	:hook
 	((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot) (v-mode . eglot)
 	 (zig-mode . eglot) (c3-mode . eglot) (go-mode . eglot) (elm-mode . eglot)
-	 (rust-mode . eglot) (enh-ruby-mode . eglot) (fennel-mode . eglot)))
+	 (rust-mode . eglot) (enh-ruby-mode . eglot) (fennel-mode . eglot) (c-mode . eglot)))
 
 ;; TAB-only configuration
 (use-package corfu
@@ -478,7 +487,9 @@
 
 (setq display-line-numbers-type 'relative)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
-(menu-bar-mode 0)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 (setq-default tab-width 2)
 (setq-default display-fill-column-indicator-column 80)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
@@ -486,9 +497,11 @@
 (setq show-trailing-whitespace t)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(use-package timu-spacegrey-theme
-	:config
-	(load-theme 'timu-spacegrey))
+
+(use-package timu-spacegrey-theme)
+(use-package jbeans-theme)
+(if (display-graphic-p) (load-theme 'jbeans) (load-theme 'timu-spacegrey))
+(if (display-graphic-p) (setq-default line-spacing 0.75))
 
 (defun set-background-for-terminal (&optional frame)
 	(or frame (setq frame (selected-frame)))
@@ -498,9 +511,6 @@
 (add-hook 'after-make-frame-functions 'set-background-for-terminal)
 (add-hook 'window-setup-hook 'set-background-for-terminal)
 
-;;(use-package jbeans-theme
-;;  :config
-;;  (load-theme 'jbeans))
 ;;(use-package ujelly-theme
 ;;  :config
 ;;  (load-theme 'ujelly))
