@@ -8,6 +8,7 @@ config.window_background_opacity = 0.90
 config.font_size = 18.0
 config.line_height = 1.4
 config.font = wezterm.font 'D2CodingLigature Nerd Font'
+config.hide_tab_bar_if_only_one_tab = true
 config.default_prog = { '/Users/aya/.cargo/bin/nu' }
 
 wezterm.on('gui-startup', function(cmd)
