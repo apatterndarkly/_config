@@ -844,6 +844,7 @@ alias zlay = ^emacs-nw /Users/aya/.config/zellij/layouts/default.kdl
 alias zup = ^zellij
 alias wconf = ^emacs-nw /Users/aya/.config/wezterm/wezterm.lua
 alias wezconf = wconf
+alias gconf = ^emacs-nw /Users/aya/.config/ghostty/config
 alias hconf = ^emacs-nw /Users/aya/.config/helix/config.toml
 alias nuconf = config nu
 alias nuenv = config env
