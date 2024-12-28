@@ -14,10 +14,10 @@
 	"vim_mode": true,
 	"theme": "Vitesse Dark",
 	"ui_font_size": 16,
-	// "buffer_font_family": "0xProto Nerd Font Mono",
+	"buffer_font_family": "D2CodingLigature Nerd Font",
 	"buffer_font_size": 15,
 	"buffer_line_height": {
-		"custom": 1.8
+		"custom": 1.7
 	},
 	"tab_size": 2,
 	"hard_tabs": true,
@@ -26,5 +26,17 @@
 		"shell": {
 			"program": "/Users/aya/.cargo/bin/nu"
 		}
-	}
+	},
+	"file_scan_exclusions": [
+		"**/.git",
+		"**/.svn",
+		"**/.hg",
+		"**/.jj",
+		"**/CVS",
+		"**/.DS_Store",
+		"**/Thumbs.db",
+		"**/.classpath",
+		"**/.settings",
+		"**/._*"
+	]
 }
