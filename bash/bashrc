@@ -8,7 +8,7 @@ export BASH_IT_AUTOMATIC_RELOAD_AFTER_CONFIG_CHANGE=1
 # export IRC_CLIENT='irssi'
 # Set this to the location of your work or project folders
 # BASH_IT_PROJECT_PATHS="${HOME}/Projects:/Volumes/work/src"
-export BASH_IT_THEME='powerline-multiline'
+# export BASH_IT_THEME='powerline-multiline'
 export XDG_CONFIG_HOME='/Users/aya/.config'
 
 
