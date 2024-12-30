@@ -3,19 +3,19 @@ window-width = 5000
 window-padding-x = 4
 window-padding-y = 4
 background-opacity = 0.85
+macos-titlebar-style = hidden
+
 font-family = D2CodingLigature Nerd Font Mono
 font-synthetic-style = true
 font-size = 15
 adjust-cell-height = 60%
-
-# window-decoration = false # window is no longer draggable
-macos-titlebar-style = hidden
+keybind = ctrl+left_bracket=text:\x1b
 copy-on-select = true
 focus-follows-mouse = true
 
-# window-colorspace = display-p3
-minimum-contrast = 3
-theme = Jellybeans
+minimum-contrast = 1
+# theme = Jellybeans
+theme = Twilight
 
 shell-integration = detect
 command = /Users/aya/.cargo/bin/nu
