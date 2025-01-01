@@ -11,7 +11,7 @@ font-size = 15
 adjust-cell-height = 60%
 keybind = ctrl+left_bracket=text:\x1b
 copy-on-select = true
-focus-follows-mouse = true
+focus-follows-mouse = false
 
 minimum-contrast = 1
 # theme = Jellybeans
