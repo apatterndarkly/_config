@@ -53,6 +53,8 @@
   (if (region-active-p)
       (comment-or-uncomment-region (region-beginning) (region-end))
     (comment-or-uncomment-region (line-beginning-position) (line-end-position))))
+(straight-use-package 'dirvish)
+(dirvish-override-dired-mode)
 
 (use-package vterm-toggle
   :straight (:type git :host github :repo "jixiuf/vterm-toggle")
