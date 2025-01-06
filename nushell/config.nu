@@ -855,6 +855,7 @@ alias nuconf = config nu
 alias nuenv = config env
 alias renu = exec nu
 alias xer = ^exercism
+alias systemctl = ^systemctl
 
 
 def murder [process_name: string = "emacs"] {
