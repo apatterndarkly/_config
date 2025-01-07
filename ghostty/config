@@ -18,4 +18,4 @@ minimum-contrast = 1
 theme = Twilight
 
 shell-integration = detect
-command = /Users/aya/.cargo/bin/nu
+command = /home/apd/.cargo/bin/nu
