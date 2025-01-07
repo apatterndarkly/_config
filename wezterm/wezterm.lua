@@ -14,6 +14,7 @@ config.font = wezterm.font_with_fallback {
   'ZedMono Nerd Font',
 }
 
+config.hide_tab_bar_if_only_one_tab = true
 config.default_prog = { '/home/apd/.cargo/bin/nu' }
 
 wezterm.on('gui-startup', function(cmd)
