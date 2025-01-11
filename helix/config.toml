@@ -1,12 +1,14 @@
-theme = "transparent_jb"
+theme = "jellybeans"
 # theme = "autumn_night"
 
 [editor]
 line-number = "relative"
-mouse = false
 bufferline = "multiple"
+cursorline = true
 true-color = true
 popup-border = "all"
+mouse = false
+rulers = [120]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -29,7 +31,7 @@ tabpad = "·"
 hidden = false
 
 [editor.indent-guides]
-render = true
+render = false
 
 [keys.insert.k]
 j = "normal_mode"
