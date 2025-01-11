@@ -2,8 +2,9 @@ window-height = 5000
 window-width = 5000
 window-padding-x = 4
 window-padding-y = 4
-background-opacity = 0.85
-macos-titlebar-style = hidden
+background-opacity = 0.35
+# macos-titlebar-style = hidden
+window-decoration = false
 
 font-family = D2CodingLigature Nerd Font Mono
 font-synthetic-style = true
@@ -14,8 +15,22 @@ copy-on-select = true
 focus-follows-mouse = false
 
 minimum-contrast = 1
-# theme = Jellybeans
-theme = Twilight
+theme = Kanagawa Dragon
 
 shell-integration = detect
 command = /home/apd/.cargo/bin/nu
+
+# theme = Broadcast
+# theme = Ciapre
+# theme = Duotone Dark
+# theme = BlulocoDark
+# theme = Desert
+# theme = Twilight
+# theme = Earthsong
+# theme = Firewatch
+# theme = Belafonte Night
+# theme = Jellybeans
+# theme = Elemental
+# theme = IC_Orange_PPL
+# theme = rose-pine
+# theme = Subliminal
