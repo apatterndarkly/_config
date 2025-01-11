@@ -1,0 +1,8 @@
+[default]
+path = "/home/apd/Pictures/zz/enhanced"
+duration = "45s"
+sorting = "random"
+mode = "fit"
+queue-size = 50
+
+[default.transition.fade]
