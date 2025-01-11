@@ -13,6 +13,10 @@ PATH="$HOME/.cargo/bin:$PATH"
 PATH="$HOME/local/bin:$PATH"
 export PATH
 
+BEMENU_OPTS="-i -H=1.4 --binding=vim --fg=white --ff=white"
+BEMENU_BACKEND=wayland
+BEMENU_SCALE=1.3
+
 test -r "$HOME/.opam/opam-init/init.sh" && . "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true
 test -r "$HOME/.cargo/env" && . "$HOME/.cargo/env"
 test -r "$HOME/.deno/env" && . "$HOME/.deno/env"
