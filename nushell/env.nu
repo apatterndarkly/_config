@@ -111,5 +111,5 @@ $env.EDITOR = "emacs-nw"
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 
-# To load from a custom file you can use:
-# source ($nu.default-config-dir | path join 'custom.nu')
+let mise_path = $nu.default-config-dir | path join mise.nu
+^mise activate nu | save $mise_path --force
