@@ -201,10 +201,23 @@
        :ext "\\.c3\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-c3-tsauto-config)
 
+(use-package go-mode
+	:straight (:type git :host github :repo "dominikh/go-mode.el")
+	:mode ("\\.go\\'" . go-mode)
+	:hook (go-mode . eglot))
+
 (add-to-list 'treesit-language-source-alist
 						 '(go "https://github.com/tree-sitter/tree-sitter-go"))
 (add-to-list 'treesit-language-source-alist
 						 '(gomod "https://github.com/camdencheek/tree-sitter-go-mod"))
+(setq custom-go-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'go
+       :ts-mode 'go-ts-mode
+       :remap '(go-mode)
+			 :requires 'go
+       :ext "\\.go\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-go-tsauto-config)
 
 (add-to-list 'treesit-language-source-alist
 						 '(c "https://github.com/tree-sitter/tree-sitter-c"))
@@ -463,6 +476,8 @@
 							 '(enh-ruby-mode . ("ruby-lsp")))
   (add-to-list 'eglot-server-programs
 							 '(fennel-mode . ("fennel-ls")))
+  (add-to-list 'eglot-server-programs
+							 '(go-mode . ("gopls")))
 	:hook
 	((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot) (v-mode . eglot)
 	 (zig-mode . eglot) (c3-mode . eglot) (go-mode . eglot) (elm-mode . eglot)
