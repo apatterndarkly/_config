@@ -60,7 +60,10 @@ for_window [class=".*"] border pixel 1
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
-		input "1133:45085:Logitech_MX_Ergo_Multi-Device_Trackball" {
+		# input "1133:45085:Logitech_MX_Ergo_Multi-Device_Trackball" {
+		# 		natural_scroll enabled
+		# }
+		input "*" {
 				natural_scroll enabled
 		}
 

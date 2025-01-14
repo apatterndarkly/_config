@@ -1,0 +1,6 @@
+{
+    "version": "2.0.1",
+    "autoload": {
+        "Logitech MX Ergo Multi-Device Trackball ": "mx_ergo_zoom"
+    }
+}
