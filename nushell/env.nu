@@ -100,8 +100,8 @@ $env.NU_PLUGIN_DIRS = [
 
 $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.cargo/bin")
 $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/local/bin")
+$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/go/bin")
 #$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.nimble/bin")
-#$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/go/bin")
 #$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.deno/bin")
 #$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.qlot/bin")
 #$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.modular/bin")
