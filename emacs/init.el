@@ -201,9 +201,26 @@
        :ext "\\.c3\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-c3-tsauto-config)
 
+(use-package json-mode
+	:straight (:type git :host github :repo "json-emacs/json-mode")
+	:mode ("\\.json\\'" . json-mode))
+(add-to-list 'treesit-language-source-alist
+						 '(json "https://github.com/tree-sitter/tree-sitter-json"))
+(setq custom-json-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'json
+       :ts-mode 'json-ts-mode
+			 :requires 'json
+       :url "https://github.com/tree-sitter/tree-sitter-json"
+       :ext "\\.json\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-json-tsauto-config)
+
 (use-package go-mode
 	:straight (:type git :host github :repo "dominikh/go-mode.el")
 	:mode ("\\.go\\'" . go-mode)
+	:config
+	(setq-local indent-tabs-mode t)
+	(setq-local tab-width 2)
 	:hook (go-mode . eglot))
 
 (add-to-list 'treesit-language-source-alist
@@ -478,6 +495,8 @@
 							 '(fennel-mode . ("fennel-ls")))
   (add-to-list 'eglot-server-programs
 							 '(go-mode . ("gopls")))
+  (add-to-list 'eglot-server-programs
+							 '(go-mode . ("gopls")))
 	:hook
 	((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot) (v-mode . eglot)
 	 (zig-mode . eglot) (c3-mode . eglot) (go-mode . eglot) (elm-mode . eglot)
@@ -517,10 +536,15 @@
 (setq display-line-numbers-type 'relative)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (menu-bar-mode 0)
+
+(setq-default indent-tabs-mode t)
 (setq-default tab-width 2)
-(setq-default display-fill-column-indicator-column 80)
+;; (defvaralias 'c-basic-offset 'tab-width)
+
+(setq-default display-fill-column-indicator-column 120)
 (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
 (set-face-attribute 'fill-column-indicator nil :foreground "black")
+
 (setq show-trailing-whitespace t)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
