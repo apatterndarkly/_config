@@ -1,5 +1,4 @@
-theme = "jellybeans"
-# theme = "autumn_night"
+theme = "base16_transparent"
 
 [editor]
 line-number = "relative"
