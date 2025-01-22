@@ -1,4 +1,4 @@
-theme = "base16_transparent"
+theme = "sunset_trpt"
 
 [editor]
 line-number = "relative"
@@ -7,7 +7,7 @@ cursorline = true
 true-color = true
 popup-border = "all"
 mouse = false
-rulers = [120]
+rulers = [80, 120]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -50,6 +50,9 @@ C-h = "select_prev_sibling"
 C-j = "shrink_selection"
 C-k = "expand_selection"
 C-l = "select_next_sibling"
+
+# lazygit
+C-s = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw", ":reload-all"]
 
 ## The above are layerd atop evil-helix (installed as indicated below) ##
 # cd /opt
@@ -179,6 +182,7 @@ k = ["extend_line_up", "extend_to_line_bounds"]
 j = ["extend_line_down", "extend_to_line_bounds"]
 
 # Escape the madness! No more fighting with the cursor! Or with multiple cursors!
+"C-["= ["collapse_selection", "normal_mode"]
 esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]
 
 # Clipboards over registers ye ye
@@ -195,5 +199,5 @@ P = "paste_clipboard_before"
 #"$" = "goto_line_end"
 #"^" = "goto_first_nonwhitespace"
 #G = "goto_file_end"
-#d = ["yank_main_selection_to_clipboard", "delete_selection"]
+# d = ["yank_main_selection_to_clipboard", "delete_selection"]
 #x = ["yank_main_selection_to_clipboard", "delete_selection"]
