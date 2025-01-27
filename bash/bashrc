@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 export XDG_CONFIG_HOME="$HOME/.config"
 export BASH_IT="$HOME/.bash_it"
 export BASH_IT_THEME='bobby'
@@ -11,23 +12,24 @@ export BASH_IT_AUTOMATIC_RELOAD_AFTER_CONFIG_CHANGE=1
 # Set this to the location of your work or project folders
 # BASH_IT_PROJECT_PATHS="${HOME}/Projects:/Volumes/work/src"
 
+HX=/home/apd/local/bin/hx
 
 alias em="$HOME/local/bin/emacs-nw"
-alias vimrc="em $HOME/.config/nvim/init.vim"
-alias brc="em $HOME/.bashrc"
-alias brofile="em $HOME/.bash_profile"
-alias profile="em $HOME/.profile"
+alias vimrc="$HX $HOME/.config/nvim/init.vim"
+alias brc="$HX $HOME/.bashrc"
+alias brofile="$HX $HOME/.bash_profile"
+alias profile="$HX $HOME/.profile"
 alias rebash=". $HOME/.bash_profile"
 alias barebash="bash --norc"
-alias zconf="em $HOME/.config/zellij/config.kdl"
-alias zlay="em $HOME/.config/zellij/layouts/default.kdl"
-alias wconf="em $HOME/.config/wezterm/wezterm.lua"
-alias econf="em $HOME/.config/emacs/init.el"
-alias nuconf="em $HOME/.config/nushell/config.nu"
-alias nuenv="em $HOME/.config/nushell/env.nu"
-alias kconf="em $HOME/.config/kitty/kitty.conf"
-alias sconf="em $HOME/.config/sway/config"
-alias barconf="em $HOME/.config/waybar/config.jsonc"
+alias zconf="$HX $HOME/.config/zellij/config.kdl"
+alias zlay="$HX $HOME/.config/zellij/layouts/default.kdl"
+alias wconf="$HX $HOME/.config/wezterm/wezterm.lua"
+alias econf="$HX $HOME/.config/emacs/init.el"
+alias nuconf="$HX $HOME/.config/nushell/config.nu"
+alias nuenv="$HX $HOME/.config/nushell/env.nu"
+alias kconf="$HX $HOME/.config/kitty/kitty.conf"
+alias sconf="$HX $HOME/.config/sway/config"
+alias barconf="$HX $HOME/.config/waybar/config.jsonc"
 
 alias gs="git status"
 alias gco="git checkout"
