@@ -17,3 +17,23 @@ auto-format = true
 name = "c"
 formatter = { command = "clang-format" }
 auto-format = true
+
+[[language]]
+name = "python"
+formatter = { command = "black" }
+auto-format = true
+
+[language.debugger]
+name = "debugpy"
+transport = "stdio"
+command = "python3"
+args = ["-m",  "debugpy.adapter"]
+
+[language-server.pylsp.config.pylsp.plugins]
+black.enabled = true
+
+[[language.debugger.templates]]
+name = "source"
+request = "launch"
+completion = [ { name = "entrypoint", completion = "filename", default = "." } ]
+args = { mode = "debug", program = "{0}" }
