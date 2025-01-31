@@ -838,22 +838,22 @@ alias dbq = ^sqlite3
 alias gs = ^git status
 alias gco = ^git checkout
 alias gsw = ^git switch
-alias econf = hx $"($env.HOME)/.config/emacs/init.el"
-alias kconf = hx $"($env.HOME)/.config/kitty/kitty.conf"
-alias zconf = hx $"($env.HOME)/.config/zellij/config.kdl"
-alias zlay = hx $"($env.HOME)/.config/zellij/layouts/default.kdl"
+alias econf = em $"($env.HOME)/.config/emacs/init.el"
+alias kconf = em $"($env.HOME)/.config/kitty/kitty.conf"
+alias zconf = em $"($env.HOME)/.config/zellij/config.kdl"
+alias zlay = em $"($env.HOME)/.config/zellij/layouts/default.kdl"
 alias zup = ^zellij
-alias wconf = hx $"($env.HOME)/.config/wezterm/wezterm.lua"
+alias wconf = em $"($env.HOME)/.config/wezterm/wezterm.lua"
 alias wezconf = wconf
-alias hconf = hx $"($env.HOME)/.config/helix/config.toml"
-alias brc = hx $"($env.HOME)/.bashrc"
-alias brofile = hx $"($env.HOME)/.bash_profile"
-alias profile = hx $"($env.HOME)/.profile"
+alias hconf = em $"($env.HOME)/.config/helix/config.toml"
+alias brc = em $"($env.HOME)/.bashrc"
+alias brofile = em $"($env.HOME)/.bash_profile"
+alias profile = em $"($env.HOME)/.profile"
 alias rebash = ^bash -c "source ~/.profile"
-alias sconf = hx $"($env.HOME)/.config/sway/config"
-alias barconf = hx $"($env.HOME)/.config/waybar/config.jsonc"
-alias gconf = hx $"($env.HOME)/.config/ghostty/config"
-alias hconf = hx $"($env.HOME)/.config/helix/config.toml"
+alias sconf = em $"($env.HOME)/.config/sway/config"
+alias barconf = em $"($env.HOME)/.config/waybar/config.jsonc"
+alias gconf = em $"($env.HOME)/.config/ghostty/config"
+alias hconf = em $"($env.HOME)/.config/helix/config.toml"
 alias nuconf = config nu
 alias nuenv = config env
 alias renu = exec nu
@@ -870,7 +870,7 @@ alias mrdr = murder
 alias redrum = murder
 
 def --env cdd [d?: string] {
-	cd $"/Volumes/2TBext4/dev/($d)"
+	cd $"($env.HOME)/dev/($d)"
 }
 
 def --env cdc [d?: string] {

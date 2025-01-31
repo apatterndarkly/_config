@@ -3,7 +3,7 @@
 # version = "0.92.2"
 
 def create_left_prompt [] {
-    let dir = match (do --ignore-shell-errors { $env.PWD | path relative-to $nu.home-path }) {
+    let dir = match (do --ignore-errors { $env.PWD | path relative-to $nu.home-path }) {
         null => $env.PWD
         '' => '~'
         $relative_pwd => ([~ $relative_pwd] | path join)
@@ -107,7 +107,8 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.config/z
 #$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.qlot/bin")
 #$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.modular/bin")
 
-$env.EDITOR = "/home/apd/local/bin/hx"
+$env.EDITOR = "emacs-nw"
+$env.config.buffer_editor = $env.EDITOR
 
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
