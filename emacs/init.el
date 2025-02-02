@@ -180,7 +180,7 @@
 (straight-use-package
  '(nushell-ts-babel :type git :host github :repo "herbertjones/nushell-ts-babel"))
 (setq treesit-language-source-alist
-			'((nu https://github.com/nushell/tree-sitter-nu)))
+			'(nu https://github.com/nushell/tree-sitter-nu))
 (use-package nushell-ts-mode
   :straight (nushell-ts-mode :type git :host github :repo "herbertjones/nushell-ts-mode")
   :config
@@ -269,16 +269,9 @@
        :ext "\\.elm\\'"))
 (add-to-list 'treesit-auto-recipe-list custom-elm-tsauto-config)
 
-(add-to-list 'treesit-language-source-alist
-						 '(rust "https://github.com/tree-sitter/tree-sitter-rust"))
-(setq custom-rust-tsauto-config
-      (make-treesit-auto-recipe
-       :lang 'rust
-       :ts-mode 'rust-ts-mode
-       :remap '(rust-mode)
-			 :requires 'rust
-       :ext "\\.rs\\'"))
-(add-to-list 'treesit-auto-recipe-list custom-rust-tsauto-config)
+(use-package zeal-at-point
+	:straight (zeal-at-point :type git :host github :repo "jinzhu/zeal-at-point"))
+
 
 (add-to-list 'treesit-language-source-alist
 						 '(lua "https://github.com/tree-sitter-grammars/tree-sitter-lua"))
@@ -378,15 +371,36 @@
 	:mode ("\\.lua\\'" . lua-mode)
 	:hook (lua-mode . eglot))
 
-(use-package rust-mode
-	:straight (:type git :host github :repo "rust-lang/rust-mode")
-  :mode ("\\.rs\\'" . rust-mode))
+(add-to-list 'treesit-language-source-alist
+						 '(rust "https://github.com/tree-sitter/tree-sitter-rust"))
+(setq custom-rust-tsauto-config
+      (make-treesit-auto-recipe
+       :lang 'rust
+       :ts-mode 'rust-ts-mode
+       ;; :remap '(rustic-mode)
+			 :requires 'rust
+       :ext "\\.rs\\'"))
+(add-to-list 'treesit-auto-recipe-list custom-rust-tsauto-config)
+
+;; (use-package rust-mode
+;; 	:straight (:type git :host github :repo "rust-lang/rust-mode")
+;;   :mode ("\\.rs\\'" . rust-mode)
+;; 	 :init (setq rust-mode-treesitter-derive t)
+;; 	 ;; :hook (rust-mode . eglot)
+;; 	 )
 
 (setq rustic-lsp-client 'eglot)
 (use-package rustic
-  :straight (:type git :host github :repo "emacs-rustic/rustic"))
-(with-eval-after-load 'rust-mode
-  (require 'rustic nil t))
+	:straight (:type git :host github :repo "emacs-rustic/rustic")
+	:after (rust-mode)
+	 ;; :init (setq rust-mode-treesitter-derive t)
+  ;; :mode ("\\.rs\\'" . rustic-mode)
+	;; :hook (rustic-mode . eglot)
+	)
+	;; :custom
+	;; (rustic-analyzer-command '("rustup" "run" "stable" "rust-analyzer")
+;; (with-eval-after-load 'rust-mode
+;;   (require 'rustic nil t))
 
 (use-package enh-ruby-mode
 	:straight (:type git :host github :repo "zenspider/enhanced-ruby-mode")
@@ -469,6 +483,7 @@
       (switch-to-buffer buf)))
   (global-set-key (kbd "C-c C-g") 'gerbil-setup-buffers))
 
+(add-hook 'eglot--managed-mode-hook (lambda () (flymake-mode -1)))
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs
@@ -488,7 +503,7 @@
   (add-to-list 'eglot-server-programs
 							 '(elm-mode . ("elm-language-server")))
   (add-to-list 'eglot-server-programs
-							 '(rust-mode . ("rust-analyzer")))
+							 '(rustic-mode . ("rustup" "run" "stable" "rust-analyzer")))
   (add-to-list 'eglot-server-programs
 							 '(enh-ruby-mode . ("ruby-lsp")))
   (add-to-list 'eglot-server-programs
@@ -500,7 +515,7 @@
 	:hook
 	((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot) (v-mode . eglot)
 	 (zig-mode . eglot) (c3-mode . eglot) (go-mode . eglot) (elm-mode . eglot)
-	 (rust-mode . eglot) (enh-ruby-mode . eglot) (fennel-mode . eglot)))
+	 (rustic-mode . eglot) (enh-ruby-mode . eglot) (fennel-mode . eglot)))
 
 ;; TAB-only configuration
 (use-package corfu
