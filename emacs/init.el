@@ -373,34 +373,14 @@
 
 (add-to-list 'treesit-language-source-alist
 						 '(rust "https://github.com/tree-sitter/tree-sitter-rust"))
-(setq custom-rust-tsauto-config
-      (make-treesit-auto-recipe
-       :lang 'rust
-       :ts-mode 'rust-ts-mode
-       ;; :remap '(rustic-mode)
-			 :requires 'rust
-       :ext "\\.rs\\'"))
-(add-to-list 'treesit-auto-recipe-list custom-rust-tsauto-config)
-
-;; (use-package rust-mode
-;; 	:straight (:type git :host github :repo "rust-lang/rust-mode")
-;;   :mode ("\\.rs\\'" . rust-mode)
-;; 	 :init (setq rust-mode-treesitter-derive t)
-;; 	 ;; :hook (rust-mode . eglot)
-;; 	 )
-
-(setq rustic-lsp-client 'eglot)
-(use-package rustic
-	:straight (:type git :host github :repo "emacs-rustic/rustic")
-	:after (rust-mode)
-	 ;; :init (setq rust-mode-treesitter-derive t)
-  ;; :mode ("\\.rs\\'" . rustic-mode)
-	;; :hook (rustic-mode . eglot)
-	)
-	;; :custom
-	;; (rustic-analyzer-command '("rustup" "run" "stable" "rust-analyzer")
-;; (with-eval-after-load 'rust-mode
-;;   (require 'rustic nil t))
+(use-package rust-mode
+	:straight (:type git :host github :repo "rust-lang/rust-mode")
+	:mode ("\\.rs\\'" . rust-mode)
+	:init (setq rust-mode-treesitter-derive t))
+;; (use-package rustic
+;; 	:straight (:type git :host github :repo "emacs-rustic/rustic")
+;; 	:init (setq rustic-lsp-client 'eglot)
+;; 	:after (rust-mode))
 
 (use-package enh-ruby-mode
 	:straight (:type git :host github :repo "zenspider/enhanced-ruby-mode")
@@ -503,7 +483,9 @@
   (add-to-list 'eglot-server-programs
 							 '(elm-mode . ("elm-language-server")))
   (add-to-list 'eglot-server-programs
-							 '(rustic-mode . ("rustup" "run" "stable" "rust-analyzer")))
+							 '(rust-mode . ("rustup" "run" "stable" "rust-analyzer")))
+  (add-to-list 'eglot-server-programs
+							 '(rust-ts-mode . ("rustup" "run" "stable" "rust-analyzer")))
   (add-to-list 'eglot-server-programs
 							 '(enh-ruby-mode . ("ruby-lsp")))
   (add-to-list 'eglot-server-programs
@@ -513,9 +495,9 @@
   (add-to-list 'eglot-server-programs
 							 '(go-mode . ("gopls")))
 	:hook
-	((odin-mode . eglot) (lua-mode . eglot) (nushell-mode . eglot) (v-mode . eglot)
-	 (zig-mode . eglot) (c3-mode . eglot) (go-mode . eglot) (elm-mode . eglot)
-	 (rustic-mode . eglot) (enh-ruby-mode . eglot) (fennel-mode . eglot)))
+	((odin-mode . eglot-ensure) (lua-mode . eglot-ensure) (nushell-mode . eglot-ensure) (v-mode . eglot-ensure)
+	 (zig-mode . eglot-ensure) (c3-mode . eglot-ensure) (go-mode . eglot-ensure) (elm-mode . eglot-ensure)
+	 (rust-mode . eglot-ensure) (rust-ts-mode . eglot-ensure) (enh-ruby-mode . eglot-ensure) (fennel-mode . eglot-ensure)))
 
 ;; TAB-only configuration
 (use-package corfu
