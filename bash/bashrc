@@ -49,3 +49,5 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
