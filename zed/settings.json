@@ -1,13 +1,13 @@
 {
 	"features": {
-		"inline_completion_provider": "none"
+		"edit_prediction_provider": "none"
 	},
 	"telemetry": {
 		"diagnostics": false,
 		"metrics": false
 	},
 	"vim_mode": true,
-	"theme": "Vitesse Black",
+	"theme": "Mellow",
 	"ui_font_size": 16,
 	"buffer_font_family": "D2CodingLigature Nerd Font",
 	"buffer_font_size": 15,
@@ -19,7 +19,7 @@
 	"formatter": "language_server",
 	"terminal": {
 		"shell": {
-			"program": "/Users/aya/.cargo/bin/nu"
+			"program": "/home/apd/.cargo/bin/nu"
 		}
 	},
 	"file_scan_exclusions": [
@@ -33,5 +33,36 @@
 		"**/.classpath",
 		"**/.settings",
 		"**/._*"
-	]
+	],
+	"experimental.theme_overrides": {
+		"background.appearance": "transparent",
+		"background": "#000000B9",
+		"border": "#112233AA",
+		"border.variant": "#2F332244",
+		"editor.active_line.background": "#1429163F",
+		"editor.background": "#000000AD",
+		"editor.gutter.background": "#000000AD",
+		"editor.indent_guide": "#33333366",
+		"editor.indent_guide_active": "#2F3322CC",
+		"ghost_element.background": "#000000D0",
+		"ghost_element.hover": "#00000099",
+		"element.active": "#2F223344",
+		"panel.background": "#040404AA",
+		"panel.indent_guide": "#223322FF",
+		"panel.overlay_background": "#001100AA",
+		"panel.focused_border": "#2F332244",
+		"renamed.background": "#FFFFFFA0",
+		"search.match_background": "#2F3366DD",
+		"scrollbar.track.background": "#000000AA",
+		"scrollbar.thumb.background": "#141414BB",
+		"scrollbar.thumb.border": "#88888833",
+		"scrollbar.track.border": "#2F332244",
+		"status_bar.background": "#000000FF",
+		"tab_bar.background": "#000000B0",
+		"tab.active_background": "#28282870",
+		"tab.inactive_background": "#00000000",
+		"terminal.background": "#04040400",
+		"title_bar.background": "#000000EE",
+		"toolbar.background": "#070707CC"
+	}
 }
