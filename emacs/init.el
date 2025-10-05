@@ -373,14 +373,11 @@
 
 (add-to-list 'treesit-language-source-alist
 						 '(rust "https://github.com/tree-sitter/tree-sitter-rust"))
+(setq rust-format-on-save t)
 (use-package rust-mode
 	:straight (:type git :host github :repo "rust-lang/rust-mode")
 	:mode ("\\.rs\\'" . rust-mode)
-	:init (setq rust-mode-treesitter-derive t))
-;; (use-package rustic
-;; 	:straight (:type git :host github :repo "emacs-rustic/rustic")
-;; 	:init (setq rustic-lsp-client 'eglot)
-;; 	:after (rust-mode))
+	:init  (setq rust-mode-treesitter-derive t))
 
 (use-package enh-ruby-mode
 	:straight (:type git :host github :repo "zenspider/enhanced-ruby-mode")
@@ -463,7 +460,7 @@
       (switch-to-buffer buf)))
   (global-set-key (kbd "C-c C-g") 'gerbil-setup-buffers))
 
-(add-hook 'eglot--managed-mode-hook (lambda () (flymake-mode -1)))
+; (add-hook 'eglot--managed-mode-hook (lambda () (flymake-mode -1)))
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs
@@ -506,6 +503,7 @@
   (corfu-preselect 'directory) ;; Select the first candidate, except for directories
   :init
   (global-corfu-mode)
+	(corfu-popupinfo-mode)
   :config
   ;; Free the RET key for less intrusive behavior.
   ;; Option 1: Unbind RET completely
@@ -518,10 +516,16 @@
 	(and (derived-mode-p 'eshell-mode 'comint-mode)
 		#'corfu-send)))))
 
+(use-package nerd-icons-corfu
+	:straight(:type git :host github :repo "LuigiPiucco/nerd-icons-corfu")
+	:config
+	(add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
 (straight-use-package
  '(corfu-terminal
-   :type git
-   :repo "https://codeberg.org/akib/emacs-corfu-terminal.git"))
+   ;; :type git
+   ;; :repo "https://codeberg.org/akib/emacs-corfu-terminal.git"))
+	 :type git :host github :repo "scturtle/corfu-terminal"))
 (unless (display-graphic-p) (corfu-terminal-mode +1))
 
 (straight-use-package 'smart-mode-line)
@@ -533,7 +537,7 @@
 (setq display-line-numbers-type 'relative)
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (menu-bar-mode 0)
-
+(global-auto-revert-mode 1)
 (setq-default indent-tabs-mode t)
 (setq-default tab-width 2)
 ;; (defvaralias 'c-basic-offset 'tab-width)
