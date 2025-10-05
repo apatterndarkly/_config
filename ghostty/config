@@ -2,7 +2,7 @@ window-height = 5000
 window-width = 5000
 window-padding-x = 4
 window-padding-y = 4
-background-opacity = 0.75
+background-opacity = 0.83
 # macos-titlebar-style = hidden
 window-decoration = false
 
@@ -34,3 +34,4 @@ command = /home/apd/.cargo/bin/nu
 # theme = IC_Orange_PPL
 # theme = rose-pine
 # theme = Subliminal
+keybind = shift+enter=text:\n
