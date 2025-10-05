@@ -158,8 +158,6 @@ $env.config = {
     }
 
     filesize: {
-        metric: false # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
-        format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, auto
     }
 
     cursor_shape: {
@@ -831,29 +829,30 @@ $env.config = {
     ]
 }
 
-alias hx = /home/apd/local/bin/hx
 alias em = ^emacs-nw
 alias nv = ^nvim
+alias zw = ^zide . wide.kdl
 alias dbq = ^sqlite3
 alias gs = ^git status
 alias gco = ^git checkout
 alias gsw = ^git switch
-alias econf = em $"($env.HOME)/.config/emacs/init.el"
-alias kconf = em $"($env.HOME)/.config/kitty/kitty.conf"
-alias zconf = em $"($env.HOME)/.config/zellij/config.kdl"
-alias zlay = em $"($env.HOME)/.config/zellij/layouts/default.kdl"
+alias econf = hx $"($env.HOME)/.config/emacs/init.el"
+alias kconf = hx $"($env.HOME)/.config/kitty/kitty.conf"
+alias zconf = hx $"($env.HOME)/.config/zellij/config.kdl"
+alias zlay = hx $"($env.HOME)/.config/zellij/layouts/default.kdl"
 alias zup = ^zellij
-alias wconf = em $"($env.HOME)/.config/wezterm/wezterm.lua"
+alias zuno = ^zellij -l uno
+alias wconf = hx $"($env.HOME)/.config/wezterm/wezterm.lua"
 alias wezconf = wconf
-alias hconf = em $"($env.HOME)/.config/helix/config.toml"
-alias brc = em $"($env.HOME)/.bashrc"
-alias brofile = em $"($env.HOME)/.bash_profile"
-alias profile = em $"($env.HOME)/.profile"
+alias hconf = hx $"($env.HOME)/.config/helix/config.toml"
+alias brc = hx $"($env.HOME)/.bashrc"
+alias brofile = hx $"($env.HOME)/.bash_profile"
+alias profile = hx $"($env.HOME)/.profile"
 alias rebash = ^bash -c "source ~/.profile"
-alias sconf = em $"($env.HOME)/.config/sway/config"
-alias barconf = em $"($env.HOME)/.config/waybar/config.jsonc"
-alias gconf = em $"($env.HOME)/.config/ghostty/config"
-alias hconf = em $"($env.HOME)/.config/helix/config.toml"
+alias sconf = hx $"($env.HOME)/.config/sway/config"
+alias barconf = hx $"($env.HOME)/.config/waybar/config.jsonc"
+alias gconf = hx $"($env.HOME)/.config/ghostty/config"
+alias hconf = hx $"($env.HOME)/.config/helix/config.toml"
 alias nuconf = config nu
 alias nuenv = config env
 alias renu = exec nu
@@ -910,5 +909,11 @@ def --env y [...args] {
 
 use ~/.cache/starship/init.nu
 #use ~/local/bin/bash-env.nu
+
+# '
+# let mise_path = $nu.default-config-dir | path join mise.nu
+# ^mise activate nu | save $mise_path --force
+# ' | save $nu.env-path --append
+# "\nuse ($nu.default-config-dir | path join mise.nu)" | save $nu.config-path --append
 
 use ($nu.default-config-dir | path join mise.nu)

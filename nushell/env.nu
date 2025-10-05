@@ -98,6 +98,7 @@ $env.NU_PLUGIN_DIRS = [
 # macOS ARM64 (Apple Silicon)
 #
 
+$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.modular/bin")
 $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.cargo/bin")
 $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/local/bin")
 $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/go/bin")
@@ -105,13 +106,19 @@ $env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.config/z
 #$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.nimble/bin")
 #$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.deno/bin")
 #$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.qlot/bin")
-#$env.PATH = ($env.PATH | split row (char esep) | prepend $"($env.HOME)/.modular/bin")
 
-$env.EDITOR = "emacs-nw"
+$env.EDITOR = "hx"
 $env.config.buffer_editor = $env.EDITOR
+
+$env.TEMP_PATH = "/tmp"
+$env.HX_TEMP_FILE = "_hx_temp_file"
 
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 
-let mise_path = $nu.default-config-dir | path join mise.nu
-^mise activate nu | save $mise_path --force
+# '
+# let mise_path = $nu.default-config-dir | path join mise.nu
+# ^mise activate nu | save $mise_path --force
+# ' | save $nu.env-path --append
+# "\nuse ($nu.default-config-dir | path join mise.nu)" | save $nu.config-path --append
+
