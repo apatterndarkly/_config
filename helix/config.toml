@@ -1,7 +1,26 @@
 theme = "mellow_trpt"
+# theme = "iroaseta_trpt"
+# theme = "ayu_dark_trpt"
+# theme = "everblush_trpt"
+# theme = "ao_trpt"
+
+# theme = "gruvbox_dark_hard_trpt"
+# theme = "dark_high_contrast_trpt"
+# theme = "flexoki_dark_trpt"
+# theme = "monokai_pro_trpt"
+# theme = "onedarker_trpt"
+# theme = "papercolor_dark_trpt"
+# theme = "rasmus_trpt"
+# theme = "seoul256_dark_hard_trpt"
+# theme = "sonokai_trpt"
+# theme = "sunset_trpt"
+# theme = "varua_trpt"
+# theme = "vintage_trpt"
+# theme = "voxed_trpt"
+# theme = "zed_onedark_trpt"
 
 [editor]
-# evil = true
+evil = false
 shell = ["/home/apd/.cargo/bin/nu", "-c"]
 line-number = "relative"
 bufferline = "multiple"
@@ -62,3 +81,4 @@ j = "normal_mode"
 # escape the madness! no more fighting with the cursor! or with multiple cursors!
 esc = ["collapse_selection", "normal_mode"]
 "C-["= ["collapse_selection", "normal_mode"]
+

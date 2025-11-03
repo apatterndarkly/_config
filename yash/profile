@@ -1,7 +1,7 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export TERM='xterm-256color'
-export SHELL="$HOME/.cargo/bin/nu"
-export EDITOR="$HOME/local/bin/emacs-nw"
+export SHELL=/usr/bin/yash
+export EDITOR="$HOME/local/bin/hx"
 
 PATH="$HOME/.qlot/bin:$PATH"
 PATH="$HOME/.modular/bin:$PATH"
@@ -17,5 +17,3 @@ export PATH
 test -r "$HOME/.opam/opam-init/init.sh" && . "$HOME/.opam/opam-init/init.sh" > /dev/null 2> /dev/null || true
 test -r "$HOME/.cargo/env" && . "$HOME/.cargo/env"
 test -r "$HOME/.deno/env" && . "$HOME/.deno/env"
-
-. "$HOME/.local/bin/env"

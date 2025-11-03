@@ -2,36 +2,48 @@ window-height = 5000
 window-width = 5000
 window-padding-x = 4
 window-padding-y = 4
-background-opacity = 0.83
-# macos-titlebar-style = hidden
+background-opacity = 0.20
 window-decoration = false
+
+scrollback-limit = 1000000000
 
 font-family = D2CodingLigature Nerd Font Mono
 font-synthetic-style = true
-font-size = 15
+font-size = 14
 adjust-cell-height = 60%
 keybind = ctrl+left_bracket=text:\x1b
 copy-on-select = true
 focus-follows-mouse = false
 
 minimum-contrast = 1
-theme = Kanagawa Dragon
 
 shell-integration = detect
 command = /home/apd/.cargo/bin/nu
 
+# theme = Black Metal (Burzum)
+# theme = Black Metal (Immortal)
+# theme = Black Metal (Khold)
+# theme = Black Metal (Venom)
+theme = Guezwhoz
+# theme = Afterglow
+# theme = Kanagawa Dragon
+# theme = Kurokula
 # theme = Broadcast
 # theme = Ciapre
 # theme = Duotone Dark
-# theme = BlulocoDark
 # theme = Desert
 # theme = Twilight
 # theme = Earthsong
 # theme = Firewatch
-# theme = Belafonte Night
 # theme = Jellybeans
 # theme = Elemental
-# theme = IC_Orange_PPL
-# theme = rose-pine
 # theme = Subliminal
+# theme = Treehouse
+# theme = Zenwritten Dark
+# theme = Violet Dark
+# theme = Pnevma
+# theme = Soft Server
+# theme = Ultra Violent
+# theme = Vague
+# theme = Later This Evening
 keybind = shift+enter=text:\n

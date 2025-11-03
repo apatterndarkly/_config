@@ -4,8 +4,7 @@ local config = wezterm.config_builder()
 config.scrollback_lines = 10000
 config.enable_scroll_bar = true
 config.hide_tab_bar_if_only_one_tab = true
-config.color_scheme = 'Sweet Love (terminal.sexy)'
-config.window_background_opacity = 0.80
+config.window_background_opacity = 0.60
 config.font_size = 16.0
 config.line_height = 1.4
 
@@ -22,7 +21,6 @@ wezterm.on('gui-startup', function(cmd)
   window:gui_window():maximize()
 end)
 
-return config
 
 
 -- config.color_scheme = 'Trim Yer Beard (terminal.sexy)'
@@ -68,7 +66,7 @@ return config
 -- config.color_scheme = 'Popping and Locking'
 -- config.color_scheme = 'Pnevma'
 -- config.color_scheme = 'Papercolor Dark (Gogh)'
--- config.color_scheme = 'Panels (terminal.sexy)'
+config.color_scheme = 'Panels (terminal.sexy)'
 -- config.color_scheme = 'Oxocarbon Dark (Gogh)'
 -- config.color_scheme = 'Operator Mono Dark'
 -- config.color_scheme = 'Oceanic-Next'
@@ -109,3 +107,5 @@ return config
 -- config.color_scheme = 'Monokai Soda (Gogh)'
 -- config.color_scheme = 'Modus-Vivendi'
 -- config.color_scheme = 'Muse (terminal.sexy)'
+
+return config

@@ -858,6 +858,7 @@ alias nuenv = config env
 alias renu = exec nu
 alias xer = ^exercism
 alias systemctl = ^systemctl
+alias q = ^rlwrap -r q
 
 
 def murder [process_name: string = "emacs"] {
@@ -917,3 +918,4 @@ use ~/.cache/starship/init.nu
 # "\nuse ($nu.default-config-dir | path join mise.nu)" | save $nu.config-path --append
 
 use ($nu.default-config-dir | path join mise.nu)
+source ~/.zoxide.nu
