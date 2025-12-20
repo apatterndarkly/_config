@@ -2,7 +2,7 @@ window-height = 5000
 window-width = 5000
 window-padding-x = 4
 window-padding-y = 4
-background-opacity = 0.20
+background-opacity = 0.64
 window-decoration = false
 
 scrollback-limit = 1000000000
@@ -47,3 +47,5 @@ theme = Guezwhoz
 # theme = Vague
 # theme = Later This Evening
 keybind = shift+enter=text:\n
+
+background = #000000
