@@ -1,5 +1,5 @@
 {
-    "version": "2.1.1",
+    "version": "2.2.0",
     "autoload": {
         "Logitech MX Ergo Multi-Device Trackball ": "mx_ergo_zoom",
         "Logitech USB Receiver": "MX Ergo S"

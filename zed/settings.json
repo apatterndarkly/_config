@@ -1,68 +1,106 @@
 {
-	"features": {
-		"edit_prediction_provider": "none"
-	},
-	"telemetry": {
-		"diagnostics": false,
-		"metrics": false
-	},
-	"vim_mode": true,
-	"theme": "Mellow",
-	"ui_font_size": 16,
-	"buffer_font_family": "D2CodingLigature Nerd Font",
-	"buffer_font_size": 15,
-	"buffer_line_height": {
-		"custom": 1.7
-	},
-	"tab_size": 2,
-	"hard_tabs": true,
-	"formatter": "language_server",
-	"terminal": {
-		"shell": {
-			"program": "/home/apd/.cargo/bin/nu"
-		}
-	},
-	"file_scan_exclusions": [
-		"**/.git",
-		"**/.svn",
-		"**/.hg",
-		"**/.jj",
-		"**/CVS",
-		"**/.DS_Store",
-		"**/Thumbs.db",
-		"**/.classpath",
-		"**/.settings",
-		"**/._*"
-	],
-	"experimental.theme_overrides": {
-		"background.appearance": "transparent",
-		"background": "#000000B9",
-		"border": "#112233AA",
-		"border.variant": "#2F332244",
-		"editor.active_line.background": "#1429163F",
-		"editor.background": "#000000AD",
-		"editor.gutter.background": "#000000AD",
-		"editor.indent_guide": "#33333366",
-		"editor.indent_guide_active": "#2F3322CC",
-		"ghost_element.background": "#000000D0",
-		"ghost_element.hover": "#00000099",
-		"element.active": "#2F223344",
-		"panel.background": "#040404AA",
-		"panel.indent_guide": "#223322FF",
-		"panel.overlay_background": "#001100AA",
-		"panel.focused_border": "#2F332244",
-		"renamed.background": "#FFFFFFA0",
-		"search.match_background": "#2F3366DD",
-		"scrollbar.track.background": "#000000AA",
-		"scrollbar.thumb.background": "#141414BB",
-		"scrollbar.thumb.border": "#88888833",
-		"scrollbar.track.border": "#2F332244",
-		"status_bar.background": "#000000FF",
-		"tab_bar.background": "#000000B0",
-		"tab.active_background": "#28282870",
-		"tab.inactive_background": "#00000000",
-		"terminal.background": "#04040400",
-		"title_bar.background": "#000000EE",
-		"toolbar.background": "#070707CC"
-	}
+  "agent_servers": {
+    "your_agent": {
+      "type": "custom",
+      "command": "/home/apd/.local/share/mise/installs/node/25.2.1/bin/claude",
+      "args": [],
+      "env": {}
+    }
+  },
+  "languages": {
+    "Plain Text": {
+      "show_whitespaces": "boundary",
+      "indent_guides": {
+        "background_coloring": "indent_aware",
+        "coloring": "indent_aware"
+      },
+      "soft_wrap": "preferred_line_length"
+    }
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
+  },
+  "prettier": {
+    "allowed": true
+  },
+  "project_panel": {
+    "hide_hidden": true
+  },
+  "icon_theme": "FantastIcons Icon Theme",
+  "features": {
+    "edit_prediction_provider": "none"
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "vim_mode": true,
+  "helix_mode": true,
+  "theme": "Min Dark (Solid)",
+  "ui_font_size": 16,
+  "buffer_font_family": "D2CodingLigature Nerd Font",
+  "buffer_font_size": 15,
+  "buffer_line_height": {
+    "custom": 1.6
+  },
+  "agent_buffer_font_size": 15,
+  "agent_ui_font_size": 16,
+  "tab_size": 2,
+  "hard_tabs": false,
+  "formatter": "language_server",
+  "terminal": {
+    "shell": {
+      "program": "/home/apd/.cargo/bin/nu"
+    }
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/._*"
+  ],
+  "experimental.theme_overrides": {
+    "background.appearance": "transparent",
+    "background": "#000000B9",
+    "border": "#112233BB",
+    "border.variant": "#2F332255",
+    "editor.active_line.background": "#1426347A",
+    "editor.background": "#0A0A0AAD",
+    "editor.gutter.background": "#000000AD",
+    "editor.indent_guide": "#33333366",
+    "editor.indent_guide_active": "#2F3322CC",
+    "ghost_element.background": "#000000D0",
+    "ghost_element.hover": "#00000099",
+    "element.active": "#2F223344",
+    "panel.background": "#040404AA",
+    "element.selected": "#441122",
+    "panel.indent_guide": "#223322FF",
+    "panel.overlay_background": "#001100AA",
+    "panel.focused_border": "#2F332244",
+    "element.selection_background": "#44000000",
+    "renamed.background": "#FFFFFFA0",
+    "search.match_background": "#2F3366DD",
+    "scrollbar.track.background": "#000000AA",
+    "scrollbar.thumb.background": "#141414BB",
+    "scrollbar.thumb.border": "#88888833",
+    "scrollbar.track.border": "#2F332244",
+    "status_bar.background": "#00000FF",
+    "tab_bar.background": "#000000B0",
+    "tab.active_background": "#28282870",
+    "tab.inactive_background": "#00000000",
+    "terminal.background": "#111111DA",
+    "title_bar.background": "#000000EE",
+    "toolbar.background": "#1010104F"
+  },
+  "collaboration_panel": {
+    "button": false
+  }
 }

@@ -9,5 +9,29 @@
 		"bindings": {
 			"ctrl-f": "terminal_panel::ToggleFocus"
 		}
+	},
+	{
+		"bindings": {
+			"ctrl-*": "editor::ToggleFocus"
+		}
+	},
+	{
+		"context": "Workspace",
+		"bindings": {
+			"ctrl-shift-b": "project_panel::ToggleFocus"
+		}
+	},
+	{
+		"context": "vim_mode",
+		"bindings": {
+			"ctrl-shift-b": "project_panel::ToggleFocus"
+		}
+	},
+	{
+		"context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+		"bindings": {
+			"Q": "vim::MiniQuotes",
+			"B": "vim::MiniBrackets"
+		}
 	}
 ]

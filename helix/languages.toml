@@ -3,43 +3,38 @@ name = "c"
 formatter = { command = "clang-format" }
 auto-format = true
 
-
 [[language]]
 name = "fennel"
 scope = "source.fennel"
 file-types = ["fnl"]
 language-servers = ["fennel-ls"]
-formatter = { command = "fnlfmt", args = ["-"]}
-[language-server.fennel-ls]
-command = "fennel-ls"
-
+formatter = { command = "fnlfmt", args = ["-"] }
 
 [[language]]
 name = "steel"
 scope = "source.steel"
 file-types = ["scm"]
 language-servers = ["steel-language-server"]
-[language-server.steel-language-server]
-command = "steel-language-server"
 
+[[language]]
+name = "markdown"
+language-servers = ["mdpls"]
 
 [[language]]
 name = "python"
 formatter = { command = "black" }
 auto-format = true
+
 [language.debugger]
 name = "debugpy"
 transport = "stdio"
 command = "python3"
-args = ["-m",  "debugpy.adapter"]
-[language-server.pylsp.config.pylsp.plugins]
-black.enabled = true
-
+args = ["-m", "debugpy.adapter"]
 
 [[language.debugger.templates]]
 name = "source"
 request = "launch"
-completion = [ { name = "entrypoint", completion = "filename", default = "." } ]
+completion = [{ name = "entrypoint", completion = "filename", default = "." }]
 args = { mode = "debug", program = "{0}" }
 
 [[language]]
@@ -56,10 +51,41 @@ block-comment-tokens = [
   { start = "/**", end = "*/" },
   { start = "/*!", end = "*/" },
 ]
-language-servers = [ "rust-analyzer" ]
+language-servers = ["rust-analyzer"]
 formatter = { command = "rustfmt" }
 indent = { tab-width = 4, unit = "    " }
 persistent-diagnostic-sources = ["rustc", "clippy"]
+
+[[language]]
+name = "json"
+auto-format = true
+
+[[language]]
+name = "toml"
+auto-format = true
+language-servers = ["tombi"]
+
+[[language]]
+name = "caddyfile"
+file-types = ["conf", { glob = "Caddyfile" }, { glob = "zathurarc" }]
+
+[[language]]
+name = "go"
+auto-format = true
+language-servers = ["gopls", "golangci-lint-lsp"]
+
+[language-server.fennel-ls]
+command = "fennel-ls"
+
+[language-server.steel-language-server]
+command = "steel-language-server"
+
+[language-server.mdpls]
+command = "mdpls"
+config = { markdown.preview.auto = true }
+
+[language-server.pylsp.config.pylsp.plugins]
+black.enabled = true
 
 [language-server.rust-analyzer]
 command = "rust-analyzer"
@@ -79,25 +105,14 @@ command = "clippy"
 # name = "rust"
 # source = { git = "https://github.com/tree-sitter/tree-sitter-rust", rev = "9c84af007b0f144954adb26b3f336495cbb320a7" }
 
-[[language]]
-name = "json"
-auto-format = true
-
-
-[[language]]
-name = "caddyfile"
-file-types = [{ glob = "Caddyfile" }, { glob = "zathurarc" }]
-
-
-[[language]]
-name = "go"
-auto-format = true
-language-servers = [ "gopls", "golangci-lint-lsp" ]
 [language-server.golangci-lint-lsp]
 command = "golangci-lint-langserver"
+
 [language-server.golangci-lint-lsp.config]
 command = [
-  "golangci-lint", "run",
-  "--out-format", "json",
+  "golangci-lint",
+  "run",
+  "--out-format",
+  "json",
   "--issues-exit-code=1"
 ]

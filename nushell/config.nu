@@ -838,6 +838,7 @@ alias gco = ^git checkout
 alias gsw = ^git switch
 alias econf = hx $"($env.HOME)/.config/emacs/init.el"
 alias kconf = hx $"($env.HOME)/.config/kitty/kitty.conf"
+alias rconf = hx $"($env.HOME)/.config/rio/config.toml"
 alias zconf = hx $"($env.HOME)/.config/zellij/config.kdl"
 alias zlay = hx $"($env.HOME)/.config/zellij/layouts/default.kdl"
 alias zup = ^zellij
@@ -910,8 +911,8 @@ def --env y [...args] {
 	rm -fp $tmp
 }
 
-use ~/.cache/starship/init.nu
-#use ~/local/bin/bash-env.nu
+# use /home/apd/.cache/starship/init.nu
+# use ~/local/bin/bash-env.nu
 
 # '
 # let mise_path = $nu.default-config-dir | path join mise.nu
@@ -919,5 +920,9 @@ use ~/.cache/starship/init.nu
 # ' | save $nu.env-path --append
 # "\nuse ($nu.default-config-dir | path join mise.nu)" | save $nu.config-path --append
 
-use ($nu.default-config-dir | path join mise.nu)
+# use ($nu.default-config-dir | path join mise.nu)
+use ("/home/apd/.config/nushell" | path join mise.nu)
+# mkdir ($nu.data-dir | path join "vendor/autoload")
+# use /home/apd/.cache/starship/init.nu
+# starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 source ~/.zoxide.nu

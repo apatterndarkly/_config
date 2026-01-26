@@ -112,8 +112,8 @@ $env.config.buffer_editor = $env.EDITOR
 $env.TEMP_PATH = "/tmp"
 $env.HX_TEMP_FILE = "_hx_temp_file"
 
-mkdir ~/.cache/starship
-starship init nu | save -f ~/.cache/starship/init.nu
+# mkdir ~/.cache/starship
+# starship init nu | save -f ~/.cache/starship/init.nu
 
 # '
 # let mise_path = $nu.default-config-dir | path join mise.nu

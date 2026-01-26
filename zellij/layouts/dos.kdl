@@ -1,0 +1,23 @@
+layout {
+    tab hide_floating_panes=true {
+        pane split_direction="vertical" {
+            pane name="joy" size="42%" command="nu" focus=true
+            pane split_direction="horizontal" {
+                pane name="nu" size="84%" command="nu"
+                pane name="bash" command="bash"
+            }
+        }
+        floating_panes {
+            pane {
+                x "10%"
+                y "14%"
+                height "72%"
+                width "80%"
+                command "nu"
+            }
+        }
+        pane size=1 borderless=true {
+        	plugin location="zellij:status-bar"
+        }
+    }
+}
