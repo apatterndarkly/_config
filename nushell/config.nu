@@ -918,4 +918,6 @@ use ~/.cache/starship/init.nu
 # "\nuse ($nu.default-config-dir | path join mise.nu)" | save $nu.config-path --append
 
 use ($nu.default-config-dir | path join mise.nu)
-source ~/.zoxide.nu
+# source ~/.zoxide.nu
+
+use ($nu.default-config-dir | path join mise.nu)

@@ -9,8 +9,8 @@ scrollback-limit = 1000000000
 
 font-family = D2CodingLigature Nerd Font Mono
 font-synthetic-style = true
-font-size = 14
-adjust-cell-height = 60%
+font-size = 10
+adjust-cell-height = 40%
 keybind = ctrl+left_bracket=text:\x1b
 copy-on-select = true
 focus-follows-mouse = false
@@ -18,7 +18,7 @@ focus-follows-mouse = false
 minimum-contrast = 1
 
 shell-integration = detect
-command = /home/apd/.cargo/bin/nu
+command = /home/apd/local/bin/nu
 
 # theme = Black Metal (Burzum)
 # theme = Black Metal (Immortal)

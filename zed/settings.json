@@ -1,5 +1,11 @@
 {
-	"features": {
+	"languages": {
+  "Zig": {
+   "show_whitespaces": "all"
+  }
+ },
+ "icon_theme": "Icons modern material (Dark)",
+ "features": {
 		"edit_prediction_provider": "none"
 	},
 	"telemetry": {
@@ -7,7 +13,7 @@
 		"metrics": false
 	},
 	"vim_mode": true,
-	"theme": "Mellow",
+	"theme": "Gruvbox Crisp Anysphere Blend Dark",
 	"ui_font_size": 16,
 	"buffer_font_family": "D2CodingLigature Nerd Font",
 	"buffer_font_size": 15,
@@ -18,8 +24,12 @@
 	"hard_tabs": true,
 	"formatter": "language_server",
 	"terminal": {
-		"shell": {
-			"program": "/home/apd/.cargo/bin/nu"
+		"font_size": 13.0,
+  "toolbar": {
+   "breadcrumbs": true
+  },
+  "shell": {
+			"program": "/home/apd/local/bin/nu"
 		}
 	},
 	"file_scan_exclusions": [

@@ -121,3 +121,5 @@ starship init nu | save -f ~/.cache/starship/init.nu
 # ' | save $nu.env-path --append
 # "\nuse ($nu.default-config-dir | path join mise.nu)" | save $nu.config-path --append
 
+let mise_path = $nu.default-config-dir | path join mise.nu
+^mise activate nu | save $mise_path --force

@@ -1,4 +1,5 @@
-theme = "mellow_trpt"
+theme = "mellow"
+# theme = "mellow_trpt"
 # theme = "iroaseta_trpt"
 # theme = "ayu_dark_trpt"
 # theme = "everblush_trpt"
@@ -21,7 +22,7 @@ theme = "mellow_trpt"
 
 [editor]
 evil = false
-shell = ["/home/apd/.cargo/bin/nu", "-c"]
+shell = ["/home/apd/local/bin/nu", "-c"]
 line-number = "relative"
 bufferline = "multiple"
 cursorline = true

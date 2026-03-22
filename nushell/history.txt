@@ -1,0 +1,444 @@
+rm -rf nushell; ln -s ../_config/nushell .
+ls
+ls nushell
+renu
+nu config
+which nu
+ls
+config nu
+help
+show config-path
+config-path
+config
+config setup
+setup
+config --help
+config flatten
+nu
+~/local/bin/nu
+cd ~/local
+ls
+ls bin
+cd bin
+cd
+.cargo/bin/
+ls
+ls cargo
+cd ..
+ls
+which nu
+cd -
+ls
+cd ~/local
+ls
+cd nushell
+ls
+ls src
+ls
+ls -a
+ls .cargo/
+ls target/
+ls target/release/
+cd ../bin/
+ln -s ../nushell/target/release/nu .
+which nu
+ls
+cd
+sudo dnf copr enable atim/starship 
+sudo dnf install starship
+clear
+config nu
+config env
+renu
+whoami
+curl https://mise.run | sh
+mise doctor
+mise help activate
+mise activate nu
+ls
+mise --help
+exit
+nu
+exit
+env nu
+clear
+ls
+mise
+mise ls-remote zig
+mise install zig@0.15.2
+mise install zig@master
+mise use --global zig@master
+zig version
+mise ls-remote uv
+mise use --global uv@latest
+gh search ziglings
+gh repos --help
+mkdir dev
+cd dev; mkdir zig; cd zig
+git clone https://codeberg.org/ziglings/exercises.git ziglings
+cd ziglings/
+zig build
+gconf
+ls ~/_config
+ls ~/_config/helix
+ls ~/.config/helix/
+ls ~/.config/ghostty
+cdc
+cdcsym
+rm -rf ghostty
+ln -s ~/_config/ghostty .
+ls
+cd ~/dev/zig/ziglings/
+ls
+hx
+cdcsym
+ls
+ls -l helix/
+rm -rf helix
+ln -s ~/_config/helix .
+hx
+cd helix
+ls
+hx config
+cd ~/_config/
+ls
+gs
+git diff nushell/
+config nu
+config env
+clear
+hx
+hconf
+renu
+exit
+nu
+exit
+local/bin/nu
+clear
+hconf
+hx
+hconf
+hx
+gconf
+ls
+clear
+cdd zig/ziglings
+zig build
+ls
+cd exercises/
+cd ..
+hx exercises/001_hello.zig
+which zig
+hx exercises/001_hello.zig
+zig build
+y
+sudo dnf copr enable lihaohong/yazi
+sudo dnf install yazi
+clear
+hx
+which yazi
+y
+hconf
+$env
+touch /tmp/_hx_temp_file
+hx
+hx exercises/002_std.zig
+ls
+zig build
+ls -l /tmp/_hx_temp_file
+chmod 644 /tmp/_hx_temp_file
+ls -l /tmp/_hx_temp_file
+chmod 664 /tmp/_hx_temp_file
+ls -l /tmp/_hx_temp_file
+hx exercises/003_assignment.zig
+hconf
+hx exercises/003_assignment.zig
+zig build
+hx exercises/003_assignment.zig
+zig build
+hx exercises/003_assignment.zig
+zig build
+hx exercises/003_assignment.zig
+zig build
+hx exercises/003_assignment.zig
+zig build
+hx exercises/003_assignment.zig
+zig build
+gconf
+hx exercises/003_assignment.zig
+zig build
+hx exercises/003_assignment.zig
+zig build
+sudo dnf search grok
+sudo dnf search Grok
+flatpak --help
+flatpak list
+flatpak search Grok
+sudo dnf search zed
+curl -f https://zed.dev/install.sh | sh
+cdc
+ls
+ls zed
+cdcsym
+ls
+ln -s ~/_config/zed .
+ls
+which zig
+zig build
+$env.PATH
+zed
+which nu
+mise --help
+mise up mise
+mise up --bump
+cd
+clear
+exit
+nu
+exit
+local/bin/nu
+exit()
+exit
+clear
+which mise
+which zig
+mise use --global zig@master
+hx health zig
+hx --health zig
+mise ls-remote zls
+mise install zls@latest
+mise use --global zls@latest
+mise ls-remote lldb-dap
+sudo dnf search lldb-dap
+sudo dnf search lldb
+sudo dnf install lldb-devel
+clear
+which lldb-dap
+hx --health zig
+cdd zig/ziglings
+which zls
+which zig
+mise ls-remote zls
+hx
+shutdown
+shutdown --now
+shutdown
+sudo dnf upgrade signal
+sudo dnf install signal-desktop
+flatpak list --installed
+flatpak list
+flatpak upgrade
+sudo dnf install tailscale
+tailscale up
+sudo systemctl enable --now tailscale
+which tailscale
+sudo tailscale up
+sudo systemctl enable --now tailscaled
+tailscale up
+which zen-browser
+which zen
+sudo tailscale up
+flatpak install krita
+clear
+sudo dnf install et
+sudo systemctl enable --now et
+cd .ssh/
+ls
+scp studio.lab.airite.io:.ssh/config .
+scp studio.snares-nase.ts.net:.ssh/config .
+scp server.snares-nase.ts.net:.ssh/config .
+ssh server
+systemctl enable --now sshd
+scp server.snares-nase.ts.net:.ssh/config .
+ssh server
+whoami
+scp apds@server.snares-nase.ts.net:.ssh/config .
+sudo hostnamectl set-hostname stealth.lab.airite.io
+hostname -s
+hostname
+sudo hx /etc/hosts
+which hx
+sudo -e hx /etc/hosts
+less /etc/hosts
+ssh apds@server.snares-nase.ts.net
+sudo systemctl enable --now ssh-agentd
+sudo systemctl enable --now ssh-agent
+which ssh-agent
+ssh-agent --help
+ssh-agent
+ssh apds@server.snares-nase.ts.net
+pwd
+hx .ssh/config
+ssh server-ts
+hx .ssh/config
+ssh server-ts
+ls .ssh/
+less .ssh/config
+ssh server-ts
+ssh -l
+ssh-agent -l
+ssh-agent -k
+ssh-add ~/.ssh/id_ed25519
+ssh server
+ssh apds@server.snares-nase.ts.net
+ls -l ~/home/apd
+ls -l /home/
+chmod 755 /home/apd
+ls -l /home/
+ssh server
+ssh apds@server.snares-nase.ts.net
+cd ..
+ls
+ls -l .ssh
+ls -al
+chmod .ssh -R .ssh
+chmod -r 755 .ssh 
+chmod .ssh -r 755
+chmod -R 755 .ssh.ssh -r 755
+pwd
+cd ls
+cd /home
+ls 0l
+ls -l
+cd apd
+chmod --help
+chmod -R 755 .ssh/
+less .ssh/config
+ssh server.lab.airite.io
+ssh server-ts
+ssh -i server-ts
+ssh-copy-id -i .ssh/id_ed25519.pub server-ts
+pwd
+ls -la
+chmod 700 .ssh
+cd .ssh
+ls
+ls -l
+chmod 600 ./*
+ls -l
+chmod 644 *.pub
+ls -l
+chmod 644 config
+ssh-copy-id -i .ssh/id_ed25519.pub server-ts
+ssh-copy-id -i .id_ed25519.pub server-ts
+ssh-copy-id -i id_ed25519.pub server-ts
+ls -l id_ed25519.pub
+chmod 600 id_ed25519.pub
+ssh-copy-id -i id_ed25519.pub server-ts
+ls -l
+dls -l
+ls -l
+chmod 644 id_ed25519.pub
+ssh-copy-id -i id_ed25519.pub apds@100.120.166.44
+ssh-copy-id -i id_ed25519.pub apds@100.110.166.44
+ls
+rm id_ed25519
+rm id_ed25519.pub
+ssh-keygen -t ed25519 -C "stealth.lab.airite.io"
+ls -l
+ssh-copy-id -i id_ed25519.pub apds@100.110.166.44
+ls -l
+cd ..
+ls -l
+ls -la
+cd ..
+ls
+ls -l
+chmod 755 /home/apd
+ls
+ls -l
+sudo chmod 755 apd
+ls -l
+cd
+ssh-copy-id -i .ssh/id_ed25519.pub apds@100.110.166.44
+tailscale up --force-reauth
+sudo tailscale up --force-reauth
+ssh server-ts
+hx .ssh/config
+sudo systemctl status talescaled
+sudo systemctl status talescale
+sudo systemctl status tailscaled
+sudo systemctl restart tailscale
+sudo systemctl restart tailscaled
+ssh server-ts
+et server-ts
+sudo hx /etc/et.cfg
+sudo --help
+sudo -E hx /etc/et.cfg
+which hx
+sudo su
+ls
+sudo -E hx /etc/et.cfg
+systemctl restart et
+et server-ts
+ls ssh
+sudo systemctl status sshd
+sudo journalctl -u tailscaled
+sudo journalctl -u et
+sudo systemctl status et
+ssh-add ~/.ssh/id_ed25519
+et server-ts
+ssh-copy-id -i .ssh/id_ed25519.pub apds@100.110.166.44
+ssh-copy-id -i .ssh/id_ed25519.pub apds.snares-nase.ts.net
+ssh-copy-id -i .ssh/id_ed25519.pub apds@server.snares-nase.ts.net
+ls
+hx .ssh/config
+sshd --help
+sudo systemctl restart sshd
+sudo ssh-add ~/.ssh/id_ed25519
+ssh-add ~/.ssh/id_ed25519
+ssh stealth-ts
+ssh server-ts
+ls -lD .ssh
+ls -l .ssh/
+ssh-copy-id -i .ssh/id_ed25519.pub apds@server.snares-nase.ts.net
+cat .ssh/id_ed25519.pub
+ssh-copy-id -i .ssh/id_ed25519.pub apds@server.snares-nase.ts.net
+ls
+cd ~/Documents/
+ls
+ls ~/.ssh/known_hosts
+less ~/.ssh/known_hosts
+cd ~/.ssh
+cat known_hosts
+hx known_hosts
+cat known_new o>> known_hosts
+less known_hosts
+hx known_hosts
+cat id_ed25519.pub
+cd -
+git clone git@git.sr.ht:~apatterndarkly/obsidian-logseq-vault cosmos
+ln -sf ~/Documents/cosmos/_ai_img_gen/krita_ai_diffusion/styles .
+ls -l
+rm -styles
+rm -r styles 
+ln -sf ~/Documents/cosmos/_ai_img_gen/krita_ai_diffusion/styles .
+ls
+which glow
+sudo dnf search glow
+sudo dnfin install glow
+sudo dnf install glow
+cd cosmos/_ai_img_gen/
+ls
+glow models_info_n_such/loras.md
+glow --pager models_info_n_such/loras.md
+glow --help
+glow -pnlt models_info_n_such/loras.md
+glow -nlt models_info_n_such/loras.md
+glow -plt models_info_n_such/loras.md
+glow -npl models_info_n_such/loras.md
+less models_info_n_such/loras.md 
+clear
+ls
+cd character_prompts/
+ls
+glow -tnl
+glow --help
+glow -tn
+cd
+cd _config/
+gs
+git diff
+which nu
+gco -b stealth
+gs
